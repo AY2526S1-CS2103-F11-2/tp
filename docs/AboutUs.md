@@ -57,3 +57,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Hinlokk
+
+<img src="images/Hinlokk.png" width="200px">
+
+[[github](http://github.com/Hinlokk)]
+[[portfolio](team/Hinlokk.md)]
+
+* Role: Developer
+* Responsibilities: UI
