@@ -9,10 +9,10 @@ This project is based on the AddressBook-Level3 project created by the [SE-EDU i
 ## 📖 Overview
 AuditionNUS is a desktop application designed to help NUS music groups conveniently manage auditionees.
 It acts like an address book, storing key details of each auditionee such as:
-* Name 
-* Instrument played 
-* Audition performance rating 
-* Comments from panelists 
+* Name
+* Instrument played
+* Audition performance rating
+* Comments from panelists
 * Contact details (Telegram handle)
 
 With this app, audition organizers can easily keep track of auditionees, update records, and retrieve information quickly during the audition process.
