@@ -9,6 +9,10 @@ import static java.util.Objects.requireNonNull;
 public class Remark {
     public final String value;
 
+    /**
+     * Remark constructor
+     * @param remark
+     */
     public Remark(String remark) {
         requireNonNull(remark);
         value = remark;
@@ -26,6 +30,10 @@ public class Remark {
                 && value.equals(((Remark) other).value)); // state check
     }
 
+    /**
+     * generate hashcode
+     * @return
+     */
     @Override
     public int hashCode() {
         return value.hashCode();
