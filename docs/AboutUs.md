@@ -24,7 +24,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/zheng-jj.png" width="200px">
 
 [[github](http://github.com/zheng-jj)]
-[[portfolio](zhengjiongjie.com)]
+[[portfolio](https://zhengjiongjie.com)]
 
 * Role: Developer
 * Responsibilities: Adding of new auditionees
