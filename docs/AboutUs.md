@@ -27,7 +27,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](https://zhengjiongjie.com)]
 
 * Role: Developer
-* Responsibilities: Adding of new auditionees
+* Responsibilities: Implementation of adding new auditionees
 
 ### Johnny Doe
 
