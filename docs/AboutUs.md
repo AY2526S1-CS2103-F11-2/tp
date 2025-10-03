@@ -9,6 +9,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Tze Hsien
+
+<img src="images/tzhsien.png" width="200px">
+
+[[linkedIn](https://www.linkedin.com/in/tzehsien/)]
+[[github](https://github.com/tzhsien)]
+[[portfolio](team/tzehsien.md)]
+
 ### Jove Fong 
 
 <img src="images/jovefyl.png" width="200px">
@@ -17,7 +25,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/jovefyl)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: Implement viewAllAuditionees feature
 
 ### Zheng Jiongjie
 
