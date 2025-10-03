@@ -19,15 +19,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Zheng Jiongjie
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zheng-jj.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/zheng-jj)]
+[[portfolio](https://zhengjiongjie.com)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Developer
+* Responsibilities: Implementation of adding new auditionees
 
 ### Johnny Doe
 
