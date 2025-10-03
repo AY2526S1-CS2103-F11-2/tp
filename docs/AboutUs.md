@@ -9,15 +9,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Tze Hsien
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tzhsien.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[linkedIn](https://www.linkedin.com/in/tzehsien/)]
+[[github](https://github.com/tzhsien)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: Implement viewAllAuditionees feature
 
 ### Jane Doe
 
