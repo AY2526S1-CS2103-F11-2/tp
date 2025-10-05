@@ -1,16 +1,25 @@
-# AuditionNUS
+# AuditionNUS 🎶
 
 [![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
 
 ![Ui](docs/images/Ui.png)
 
-* This is **a sample project for Software Engineering (SE) students**.<br>
-  Example usages:
-  * as a starting point of a course project (as opposed to writing everything from scratch)
-  * as a case study
-* The project simulates an ongoing software project for a desktop application (called _AddressBook_) used for managing contact details.
-  * It is **written in OOP fashion**. It provides a **reasonably well-written** code base **bigger** (around 6 KLoC) than what students usually write in beginner-level SE modules, without being overwhelmingly big.
-  * It comes with a **reasonable level of user and developer documentation**.
-* It is named `AddressBook Level 3` (`AB3` for short) because it was initially created as a part of a series of `AddressBook` projects (`Level 1`, `Level 2`, `Level 3` ...).
-* For the detailed documentation of this project, see the **[Address Book Product Website](https://se-education.org/addressbook-level3)**.
-* This project is a **part of the se-education.org** initiative. If you would like to contribute code to this project, see [se-education.org](https://se-education.org/#contributing-to-se-edu) for more info.
+This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+
+## 📖 Overview
+AuditionNUS is a desktop application designed to help NUS music groups conveniently manage auditionees.
+It acts like an address book, storing key details of each auditionee such as:
+* Name
+* Instrument played
+* Audition performance rating
+* Comments from panelists
+* Contact details (Telegram handle)
+
+With this app, audition organizers can easily keep track of auditionees, update records, and retrieve information quickly during the audition process.
+
+## 🚀 Features
+* **View all auditionees**: List all auditionees currently stored in the app.
+* **Add new auditionee**: Add a new entry with details like name, instrument, rating, comments, and contact.
+* **Delete auditionee**: Remove an auditionee’s record when it’s no longer needed.
+* **Sort auditionees**: Sort the list of auditionees (e.g. by name, rating, or instrument) for easier navigation.
+* **View auditionee information**: Display the full details of a selected auditionee in a clear and structured format.
