@@ -9,15 +9,24 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Tze Hsien
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tzhsien.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
+[[linkedIn](https://www.linkedin.com/in/tzehsien/)]
+[[github](https://github.com/tzhsien)]
+[[portfolio](team/tzehsien.md)]
+
+### Jove Fong 
+
+<img src="images/jovefyl.png" width="200px">
+
+[[homepage](https://www.linkedin.com/in/jovefong/)]
+[[github](https://github.com/jovefyl)]
 [[portfolio](team/johndoe.md)]
 
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: Implement viewAllAuditionees feature
 
 ### Zheng Jiongjie
 
@@ -54,6 +63,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/johndoe)]
 [[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: UI
+
+### Hinlokk
+
+<img src="images/Hinlokk.png" width="200px">
+
+[[github](http://github.com/Hinlokk)]
+[[portfolio](team/Hinlokk.md)]
 
 * Role: Developer
 * Responsibilities: UI

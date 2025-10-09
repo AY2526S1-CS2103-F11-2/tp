@@ -262,13 +262,13 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of auditionees for NUS Music Club
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage auditionees faster than a typical mouse/GUI driven app
 
 
 ### User stories
@@ -290,15 +290,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
-
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
-
+Use case 1: UC01 – View all auditionees.  
+Actors: User (audition organizer)  
+Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle), 
+etc.)  
+1.  User requests to <u>view all auditionees (UC01)</u>.
+2.  AddressBook shows a list of auditionees with their details.
     Use case ends.
 
 **Extensions**
@@ -306,12 +305,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 2a. The list is empty.
 
   Use case ends.
-
-* 3a. The given index is invalid.
-
-    * 3a1. AddressBook shows an error message.
-
-      Use case resumes at step 2.
 
 *{More to be added}*
 
