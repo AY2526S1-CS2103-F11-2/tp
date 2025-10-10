@@ -283,7 +283,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| `* * *`  | club leader   | view all auditionees with indices           | identify the correct record to edit or delete     |
+| `* * *`  | club leader   | delete an auditionee by index               | remove incorrect or outdated entries              |
+| `* * *`  | club leader   | add a new auditionee                        | keep the audition list up to date                 |
+| `* * *`  | club leader   | find auditionees by name/instrument         | locate a record without scanning the full list    |
+| `* *`    | club leader   | edit an auditionee’s details                | correct mistakes without re-adding the entry      |
+| `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
+| `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
+| `*`      | club leader   | see a confirmation/prompt for destructive ops| avoid accidental data loss                        |
+| `*`      | club leader   | see error messages for invalid indices      | understand how to correct my command              |
+| `*`      | club leader   | export auditionees                          | share lists with the team                         |
 *{More to be added}*
 
 ### Use cases
@@ -315,19 +324,60 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
+**Use case: Delete an auditionee**
+
+- **Actor**: Club leader
+- **Goal**: Remove an auditionee’s record from the system
+- **Precondition**: Auditionee list is not empty
+
+**MSS**
+
+1. User requests to list auditionees (e.g., `viewAll`).
+2. System shows the list with indices.
+3. User enters `deleteAuditionee(INDEX)`, e.g., `deleteAuditionee(2)`.
+4. System validates the index.
+5. System deletes the corresponding auditionee.
+6. System shows: `Auditionee [Name] has been successfully deleted.`
+
+**Extensions**
+
+* 2a. The list is empty.  
+  → Use case ends.
+
+* 3a. INDEX is not an integer or out of range.  
+  3a1. System shows: `Please enter a valid index.`  
+  3a2. Use case resumes at step 3.
+
+* 5a. The target auditionee is no longer present (e.g., concurrently removed).  
+  5a1. System shows: `Auditionee not found.`  
+  5a2. Use case ends.
+
+**Command format and validation (for reference)**
+
+* Command: `deleteAuditionee(INDEX)`
+* Acceptable values: `INDEX` is an integer corresponding to the currently displayed list.
+* Error messages:
+    * `Auditionee index not found!` when the index does not exist in the system
+    * `Please enter a valid index.` when input is not a valid integer or out of range
+* Rationale: Using the displayed index avoids confusion across potential duplicate names.
+
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
+4.  Data mutations (add/edit/delete) are atomic; no partial writes.
+5.   Optional command history enables tracing changes
 *{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-
+  **Auditionee**: A person registered to audition for the NUS Music Club.
+* **Index**: A 1-based integer referencing an item in the currently displayed list.
+* **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
+* **Validation**: Checking that user input (e.g., index) is syntactically and semantically acceptable.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
