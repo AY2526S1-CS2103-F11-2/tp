@@ -322,6 +322,30 @@ Goal: Sort and display all auditionees with their details according to instrumen
 - 3a. No auditionees found in the system.
   - 3a1. AuditionNUS shows “No auditionees available to sort.” Use case ends.
 
+
+Use case 3: UC03 – Add new auditionee.  
+Actors: User (audition organizer)  
+Goal: Add the details for new auditionees.
+
+**MSS** 
+
+1.  User requests to add new auditionee.
+2.  User enters auditionee details. 
+3.  System saves the details of new auditionee. 
+4.  System displays success message, as well as the details of added auditonee.
+    Use case ends.
+
+**Extensions**
+
+2a. System detects error in entered data.
+  - 2a1. System requests for the correct data.
+  - 2a2. User enters new data.
+  - Steps 2a1-2a2 are repeated until the data entered are correct.
+  - Use case resumes from step 3.
+
+*a. At any time, User chooses to cancel the addition of new auditionee.
+   - Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
