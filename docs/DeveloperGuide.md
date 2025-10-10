@@ -290,21 +290,37 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**MSS**
-
 Use case 1: UC01 – View all auditionees.  
 Actors: User (audition organizer)  
 Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle), 
 etc.)  
+
+**MSS**
+
 1.  User requests to <u>view all auditionees (UC01)</u>.
 2.  AddressBook shows a list of auditionees with their details.
     Use case ends.
 
+Use case 2: UC02 – Sort all auditionees.  
+Actors: User (audition organizer)  
+Goal: Sort and display all auditionees with their details according to instrument or rating.
+
+**MSS** 
+
+1.  Leader requests to sort the auditionees.
+2.  AuditionNUS accepts the sorting criteria (e.g., by name, score, instrument, or audition date). 
+3.  AuditionNUS retrieves the list of auditionees. 
+4.  AuditionNUS sorts the list based on the selected criteria. 
+5.  AuditionNUS displays the sorted list of auditionees.
+    Use case ends.
+
 **Extensions**
 
-* 2a. The list is empty.
+- 2a. Invalid sorting criteria entered
+  - 2a1 AuditionNUS shows “Invalid sorting option. Please select a valid criterion.” Use case ends.
 
-  Use case ends.
+- 3a. No auditionees found in the system.
+  - 3a1. AuditionNUS shows “No auditionees available to sort.” Use case ends.
 
 *{More to be added}*
 
@@ -312,7 +328,9 @@ etc.)
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse. 
+4.  App must not crash when main operations are conducted.
+5.  App should start up in less than **2 seconds**.
 
 *{More to be added}*
 
