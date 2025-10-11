@@ -3,7 +3,9 @@ layout: page
 title: User Guide
 ---
 
-AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
+AuditionNUS is a **desktop app for managing auditionee information, optimized for use via a Command Line Interface** 
+(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your 
+auditionee management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -26,13 +28,15 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+   * `viewall` : Lists all auditionees.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+   * `add <name>; <telegramhandle>; <instrument>; <comments>; <final score out of 10> ` : Adds an auditionee named 
+     `John 
+   Doe` to the AuditionBook.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `clear` : Deletes all contacts.
+   * `sort` : Deletes all contacts.
 
    * `exit` : Exits the app.
 
@@ -87,7 +91,7 @@ Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
 
-### Listing all persons : `list`
+### Listing all persons : `viewall`
 
 Shows a list of all persons in the address book.
 
