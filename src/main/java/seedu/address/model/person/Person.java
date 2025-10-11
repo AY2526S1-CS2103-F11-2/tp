@@ -29,14 +29,14 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, TeleHandle teleHandle, Instrument instrument, Rating rating,
-                  Comment comment, Set<Tag> tags) {
+    public Person(Name name, TeleHandle teleHandle, Instrument instrument, Comment comment,
+                  Rating rating, Set<Tag> tags) {
         requireAllNonNull(name, teleHandle, instrument, rating, comment, tags);
         this.name = name;
         this.teleHandle = teleHandle;
         this.instrument = instrument;
-        this.rating = rating;
         this.comment = comment;
+        this.rating = rating;
         this.tags.addAll(tags);
     }
 

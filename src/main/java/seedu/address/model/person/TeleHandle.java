@@ -8,7 +8,7 @@ public class TeleHandle {
 
     public static final String VALIDATION_REGEX = "^@[A-Za-z0-9_]{5,32}$";
 
-    public final String value;
+    public final String telehandle;
 
     /**
      * Constructs an {@code telehandle}.
@@ -18,7 +18,7 @@ public class TeleHandle {
     public TeleHandle(String telehandle) {
         requireNonNull(telehandle);
         checkArgument(isValidTeleHandle(telehandle), MESSAGE_CONSTRAINTS);
-        value = telehandle;
+        this.telehandle = telehandle;
     }
 
     /**
@@ -30,7 +30,7 @@ public class TeleHandle {
 
     @Override
     public String toString() {
-        return value;
+        return telehandle;
     }
 
     /**
@@ -40,11 +40,11 @@ public class TeleHandle {
     public boolean equals(Object other) {
         return other == this
                 || other instanceof TeleHandle
-                && value.equals(((TeleHandle) other).value);
+                && telehandle.equals(((TeleHandle) other).telehandle);
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return telehandle.hashCode();
     }
 }
