@@ -9,54 +9,34 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Tze Hsien
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/tzhsien.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[linkedIn](https://www.linkedin.com/in/tzehsien/)]
+[[github](https://github.com/tzhsien)]
+[[portfolio](team/tzehsien.md)]
 
-* Role: Project Advisor
+### Jove Fong 
 
-### Jane Doe
+<img src="images/jovefyl.png" width="200px">
 
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Team Lead
-* Responsibilities: UI
-
-### Johnny Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
+[[homepage](https://www.linkedin.com/in/jovefong/)]
+[[github](https://github.com/jovefyl)]
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Implement viewAllAuditionees feature
 
-### James Doe
+### Zheng Jiongjie
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/zheng-jj.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/zheng-jj)]
+[[portfolio](https://zhengjiongjie.com)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Implementation of adding new auditionees
 
 ### Hinlokk
 
