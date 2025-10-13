@@ -32,8 +32,8 @@ class JsonAdaptedPerson {
      */
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("telehandle") String telehandle,
-            @JsonProperty("instrument") String instrument, @JsonProperty("comment") String comment,
-            @JsonProperty("rating") String rating, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("instrument") String instrument, @JsonProperty("comment") String comment,
+                             @JsonProperty("rating") String rating, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.telehandle = telehandle;
         this.instrument = instrument;
@@ -78,7 +78,8 @@ class JsonAdaptedPerson {
         final Name modelName = new Name(name);
 
         if (telehandle == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, TeleHandle.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    TeleHandle.class.getSimpleName()));
         }
         if (!TeleHandle.isValidTeleHandle(telehandle)) {
             throw new IllegalValueException(TeleHandle.MESSAGE_CONSTRAINTS);
@@ -86,7 +87,8 @@ class JsonAdaptedPerson {
         final TeleHandle modelTelehandle = new TeleHandle(telehandle);
 
         if (instrument == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Instrument.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Instrument.class.getSimpleName()));
         }
         if (!Instrument.isValidInstrumentName(instrument)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);

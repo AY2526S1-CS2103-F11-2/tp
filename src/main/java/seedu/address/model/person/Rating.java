@@ -3,6 +3,10 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a rating for a person.
+ * Ensures the rating is a number between 0 and 10.
+ */
 public class Rating {
     public static final String MESSAGE_CONSTRAINTS =
             "Rating should only contain numbers on a scale of 0 to 10";

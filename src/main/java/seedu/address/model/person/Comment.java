@@ -3,6 +3,10 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * Represents a comment associated with a person.
+ * Ensures the comment is not blank and can contain any characters.
+ */
 public class Comment {
     public static final String MESSAGE_CONSTRAINTS =
             "Comments can contain any characters and should not be blank";

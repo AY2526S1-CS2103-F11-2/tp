@@ -1,10 +1,13 @@
 package seedu.address.logic.commands;
 
-import seedu.address.model.Model;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
+import seedu.address.model.Model;
+
+/**
+ * Command to display all entries in the address book.
+ */
 public class ViewAllCommand extends Command {
     public static final String COMMAND_WORD = "viewall";
 

@@ -2,9 +2,14 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
-
+/**
+ * Represents a Telegram handle in the address book.
+ * Ensures the handle starts with '@' and contains 5–32 letters, digits, or underscores.
+ */
 public class TeleHandle {
-    public static final String MESSAGE_CONSTRAINTS = "Telegram handles should start with '@' and contain 5–32 letters, digits, or underscores only.";
+    public static final String MESSAGE_CONSTRAINTS = "Telegram handles should start with '@' " +
+            "and contain 5–32 letters," + " " +
+            "digits, or underscores only.";
 
     public static final String VALIDATION_REGEX = "^@[A-Za-z0-9_]{5,32}$";
 
