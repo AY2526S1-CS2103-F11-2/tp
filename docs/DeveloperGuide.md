@@ -317,27 +317,36 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage a significant number of auditionees for NUS Music Club
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: manage auditionees faster than a typical mouse/GUI driven app
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                 | So that I can…​                                                        |
-|----------|--------------------------------------------|------------------------------|------------------------------------------------------------------------|
-| `* * *`  | new user                                   | see usage instructions       | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person             |                                                                        |
-| `* * *`  | user                                       | delete a person              | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name        | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name         | locate a person easily                                                 |
-
+| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
+| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
+| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                       | add a new person               |                                                                        |
+| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
+| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
+| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *`  | club leader   | view all auditionees with indices           | identify the correct record to edit or delete     |
+| `* * *`  | club leader   | delete an auditionee by index               | remove incorrect or outdated entries              |
+| `* * *`  | club leader   | add a new auditionee                        | keep the audition list up to date                 |
+| `* * *`  | club leader   | find auditionees by name/instrument         | locate a record without scanning the full list    |
+| `* *`    | club leader   | edit an auditionee’s details                | correct mistakes without re-adding the entry      |
+| `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
+| `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
+| `*`      | club leader   | see a confirmation/prompt for destructive ops| avoid accidental data loss                        |
+| `*`      | club leader   | see error messages for invalid indices      | understand how to correct my command              |
+| `*`      | club leader   | export auditionees                          | share lists with the team                         |
 *{More to be added}*
 
 ### Use cases
@@ -345,37 +354,110 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
 otherwise)
 
-**Use case: Delete a person**
+Use case 1: UC01 – View all auditionees.  
+Actors: User (audition organizer)  
+Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle), 
+etc.)  
 
 **MSS**
 
-1. User requests to list persons
-2. AddressBook shows a list of persons
-3. User requests to delete a specific person in the list
-4. AddressBook deletes the person
+1.  User requests to <u>view all auditionees (UC01)</u>.
+2.  AddressBook shows a list of auditionees with their details.
+    Use case ends.
 
-   Use case ends.
+Use case 2: UC02 – Sort all auditionees.  
+Actors: User (audition organizer)  
+Goal: Sort and display all auditionees with their details according to instrument or rating.
+
+**MSS** 
+
+1.  Leader requests to sort the auditionees.
+2.  AuditionNUS accepts the sorting criteria (e.g., by name, score, instrument, or audition date). 
+3.  AuditionNUS retrieves the list of auditionees. 
+4.  AuditionNUS sorts the list based on the selected criteria. 
+5.  AuditionNUS displays the sorted list of auditionees.
+    Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+- 2a. Invalid sorting criteria entered
+  - 2a1 AuditionNUS shows “Invalid sorting option. Please select a valid criterion.” Use case ends.
 
-  Use case ends.
+- 3a. No auditionees found in the system.
+  - 3a1. AuditionNUS shows “No auditionees available to sort.” Use case ends.
 
-* 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+Use case 3: UC03 – Add new auditionee.  
+Actors: User (audition organizer)  
+Goal: Add the details for new auditionees.
 
-      Use case resumes at step 2.
+**MSS** 
+
+1.  User requests to add new auditionee.
+2.  User enters auditionee details. 
+3.  System saves the details of new auditionee. 
+4.  System displays success message, as well as the details of added auditonee.
+    Use case ends.
+
+**Extensions**
+
+2a. System detects error in entered data.
+  - 2a1. System requests for the correct data.
+  - 2a2. User enters new data.
+  - Steps 2a1-2a2 are repeated until the data entered are correct.
+  - Use case resumes from step 3.
+
+*a. At any time, User chooses to cancel the addition of new auditionee.
+   - Use case ends.
 
 *{More to be added}*
 
+**Use case: Delete an auditionee**
+
+- **Actor**: Club leader
+- **Goal**: Remove an auditionee’s record from the system
+- **Precondition**: Auditionee list is not empty
+
+**MSS**
+
+1. User requests to list auditionees (e.g., `viewAll`).
+2. System shows the list with indices.
+3. User enters `deleteAuditionee(INDEX)`, e.g., `deleteAuditionee(2)`.
+4. System validates the index.
+5. System deletes the corresponding auditionee.
+6. System shows: `Auditionee [Name] has been successfully deleted.`
+
+**Extensions**
+
+* 2a. The list is empty.  
+  → Use case ends.
+
+* 3a. INDEX is not an integer or out of range.  
+  3a1. System shows: `Please enter a valid index.`  
+  3a2. Use case resumes at step 3.
+
+* 5a. The target auditionee is no longer present (e.g., concurrently removed).  
+  5a1. System shows: `Auditionee not found.`  
+  5a2. Use case ends.
+
+**Command format and validation (for reference)**
+
+* Command: `deleteAuditionee(INDEX)`
+* Acceptable values: `INDEX` is an integer corresponding to the currently displayed list.
+* Error messages:
+    * `Auditionee index not found!` when the index does not exist in the system
+    * `Please enter a valid index.` when input is not a valid integer or out of range
+* Rationale: Using the displayed index avoids confusion across potential duplicate names.
+
 ### Non-Functional Requirements
 
-1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
-   able to accomplish most of the tasks faster using commands than using the mouse.
+1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  Data mutations (add/edit/delete) are atomic; no partial writes.
+5.  Optional command history enables tracing changes 
+6.  App must not crash when main operations are conducted.
+7.  App should start up in less than **2 seconds**.
 
 *{More to be added}*
 
@@ -383,7 +465,10 @@ otherwise)
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-
+  **Auditionee**: A person registered to audition for the NUS Music Club.
+* **Index**: A 1-based integer referencing an item in the currently displayed list.
+* **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
+* **Validation**: Checking that user input (e.g., index) is syntactically and semantically acceptable.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
