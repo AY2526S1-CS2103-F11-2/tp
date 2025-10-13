@@ -13,7 +13,12 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Comment;
+import seedu.address.model.person.Instrument;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Rating;
+import seedu.address.model.person.TeleHandle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -28,15 +33,18 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEHANDLE, PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING,
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TELEHANDLE,
+                        PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING,
                         PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEHANDLE, PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING)
+        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_TELEHANDLE,
+                PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEHANDLE, PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEHANDLE,
+                PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING);
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         TeleHandle telehandle = ParserUtil.parseTeleHandle(argMultimap.getValue(PREFIX_TELEHANDLE).get());
         Instrument instrument = ParserUtil.parseInstrument(argMultimap.getValue(PREFIX_INSTRUMENT).get());

@@ -2,8 +2,12 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_INSTRUMENT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RATING;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TELEHANDLE;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -40,7 +44,8 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEHANDLE, PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING);
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_TELEHANDLE,
+                PREFIX_INSTRUMENT, PREFIX_COMMENT, PREFIX_RATING);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
 
@@ -48,10 +53,12 @@ public class EditCommandParser implements Parser<EditCommand> {
             editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
         }
         if (argMultimap.getValue(PREFIX_TELEHANDLE).isPresent()) {
-            editPersonDescriptor.setTeleHandle(ParserUtil.parseTeleHandle(argMultimap.getValue(PREFIX_TELEHANDLE).get()));
+            editPersonDescriptor.setTeleHandle(ParserUtil.parseTeleHandle(argMultimap.
+                    getValue(PREFIX_TELEHANDLE).get()));
         }
         if (argMultimap.getValue(PREFIX_INSTRUMENT).isPresent()) {
-            editPersonDescriptor.setInstrument(ParserUtil.parseInstrument(argMultimap.getValue(PREFIX_INSTRUMENT).get()));
+            editPersonDescriptor.setInstrument(ParserUtil.parseInstrument(argMultimap.
+                    getValue(PREFIX_INSTRUMENT).get()));
         }
         if (argMultimap.getValue(PREFIX_COMMENT).isPresent()) {
             editPersonDescriptor.setComment(ParserUtil.parseComment(argMultimap.getValue(PREFIX_COMMENT).get()));

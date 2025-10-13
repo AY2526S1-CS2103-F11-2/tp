@@ -10,7 +10,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Comment;
+import seedu.address.model.person.Instrument;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Rating;
+import seedu.address.model.person.TeleHandle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -91,7 +96,7 @@ class JsonAdaptedPerson {
                     Instrument.class.getSimpleName()));
         }
         if (!Instrument.isValidInstrumentName(instrument)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Instrument.MESSAGE_CONSTRAINTS);
         }
         final Instrument modelInstrument = new Instrument(instrument);
 
