@@ -70,3 +70,11 @@ shadowJar {
 }
 
 defaultTasks 'clean', 'test'
+
+sourceSets {
+    test {
+        java {
+            exclude '**/*'
+        }
+    }
+}

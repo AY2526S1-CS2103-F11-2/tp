@@ -17,7 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/tzhsien)]
 [[portfolio](team/tzehsien.md)]
 
-### Jove Fong 
+### Jove Fong
 
 <img src="images/jovefyl.png" width="200px">
 

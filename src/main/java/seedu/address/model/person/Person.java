@@ -18,22 +18,25 @@ public class Person {
 
     // Identity fields
     private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private final TeleHandle teleHandle;
 
     // Data fields
-    private final Address address;
+    private final Rating rating;
+    private final Instrument instrument;
+    private final Comment comment;
     private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, TeleHandle teleHandle, Instrument instrument, Comment comment,
+                  Rating rating, Set<Tag> tags) {
+        requireAllNonNull(name, teleHandle, instrument, rating, comment, tags);
         this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
+        this.teleHandle = teleHandle;
+        this.instrument = instrument;
+        this.comment = comment;
+        this.rating = rating;
         this.tags.addAll(tags);
     }
 
@@ -41,16 +44,20 @@ public class Person {
         return name;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public TeleHandle getTeleHandle() {
+        return teleHandle;
     }
 
-    public Email getEmail() {
-        return email;
+    public Instrument getInstrument() {
+        return instrument;
     }
 
-    public Address getAddress() {
-        return address;
+    public Rating getRating() {
+        return rating;
+    }
+
+    public Comment getComment() {
+        return comment;
     }
 
     /**
@@ -91,25 +98,27 @@ public class Person {
 
         Person otherPerson = (Person) other;
         return name.equals(otherPerson.name)
-                && phone.equals(otherPerson.phone)
-                && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
+                && teleHandle.equals(otherPerson.teleHandle)
+                && instrument.equals(otherPerson.instrument)
+                && rating.equals(otherPerson.rating)
+                && comment.equals(otherPerson.comment)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, teleHandle, instrument, rating, comment, tags);
     }
 
     @Override
     public String toString() {
         return new ToStringBuilder(this)
                 .add("name", name)
-                .add("phone", phone)
-                .add("email", email)
-                .add("address", address)
+                .add("telehandle", teleHandle)
+                .add("instrument", instrument)
+                .add("rating", rating)
+                .add("comment", comment)
                 .add("tags", tags)
                 .toString();
     }

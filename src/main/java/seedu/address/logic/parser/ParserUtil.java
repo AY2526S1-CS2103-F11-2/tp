@@ -9,10 +9,11 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Address;
-import seedu.address.model.person.Email;
+import seedu.address.model.person.Comment;
+import seedu.address.model.person.Instrument;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Phone;
+import seedu.address.model.person.Rating;
+import seedu.address.model.person.TeleHandle;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -56,13 +57,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code phone} is invalid.
      */
-    public static Phone parsePhone(String phone) throws ParseException {
-        requireNonNull(phone);
-        String trimmedPhone = phone.trim();
-        if (!Phone.isValidPhone(trimmedPhone)) {
-            throw new ParseException(Phone.MESSAGE_CONSTRAINTS);
+    public static TeleHandle parseTeleHandle(String telehandle) throws ParseException {
+        requireNonNull(telehandle);
+        String trimmedTeleHandle = telehandle.trim();
+        if (!TeleHandle.isValidTeleHandle(trimmedTeleHandle)) {
+            throw new ParseException(TeleHandle.MESSAGE_CONSTRAINTS);
         }
-        return new Phone(trimmedPhone);
+        return new TeleHandle(trimmedTeleHandle);
     }
 
     /**
@@ -71,13 +72,13 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code address} is invalid.
      */
-    public static Address parseAddress(String address) throws ParseException {
-        requireNonNull(address);
-        String trimmedAddress = address.trim();
-        if (!Address.isValidAddress(trimmedAddress)) {
-            throw new ParseException(Address.MESSAGE_CONSTRAINTS);
+    public static Instrument parseInstrument(String instrument) throws ParseException {
+        requireNonNull(instrument);
+        String trimmedInstrument = instrument.trim();
+        if (!Instrument.isValidInstrumentName(trimmedInstrument)) {
+            throw new ParseException(Instrument.MESSAGE_CONSTRAINTS);
         }
-        return new Address(trimmedAddress);
+        return new Instrument(trimmedInstrument);
     }
 
     /**
@@ -86,13 +87,28 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+    public static Comment parseComment(String comment) throws ParseException {
+        requireNonNull(comment);
+        String trimmedComment = comment.trim();
+        if (!Comment.isValidCommentText(trimmedComment)) {
+            throw new ParseException(Comment.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new Comment(trimmedComment);
+    }
+
+    /**
+     * Parses a {@code String rating} into a {@code Rating}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code rating} is invalid.
+     */
+    public static Rating parseRating(String rating) throws ParseException {
+        requireNonNull(rating);
+        String trimmedRating = rating.trim();
+        if (!Rating.isValidRating(trimmedRating)) {
+            throw new ParseException(Rating.MESSAGE_CONSTRAINTS);
+        }
+        return new Rating(trimmedRating);
     }
 
     /**
