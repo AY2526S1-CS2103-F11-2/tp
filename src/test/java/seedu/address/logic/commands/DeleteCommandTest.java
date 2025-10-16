@@ -18,7 +18,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Person;
-
+import seedu.address.model.tag.Tag;
 /**
  * Contains integration tests (interaction with the Model) and unit tests for
  * {@code DeleteCommand}.
@@ -34,9 +34,11 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
+        assertSuccessMessageContainsPersonDetails(expectedMessage, personToDelete);
 
         ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deletePerson(personToDelete);
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
@@ -58,10 +60,11 @@ public class DeleteCommandTest {
 
         String expectedMessage = String.format(DeleteCommand.MESSAGE_DELETE_PERSON_SUCCESS,
                 Messages.format(personToDelete));
+        assertSuccessMessageContainsPersonDetails(expectedMessage, personToDelete);
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.deletePerson(personToDelete);
-        showNoPerson(expectedModel);
+        expectedModel.updateFilteredPersonList(Model.PREDICATE_SHOW_ALL_PERSONS);
 
         assertCommandSuccess(deleteCommand, model, expectedMessage, expectedModel);
     }
@@ -109,12 +112,14 @@ public class DeleteCommandTest {
         assertEquals(expected, deleteCommand.toString());
     }
 
-    /**
-     * Updates {@code model}'s filtered list to show no one.
-     */
-    private void showNoPerson(Model model) {
-        model.updateFilteredPersonList(p -> false);
-
-        assertTrue(model.getFilteredPersonList().isEmpty());
+    private static void assertSuccessMessageContainsPersonDetails(String expectedMessage, Person person) {
+        assertTrue(expectedMessage.contains(person.getName().toString()));
+        assertTrue(expectedMessage.contains(person.getTeleHandle().toString()));
+        assertTrue(expectedMessage.contains(person.getInstrument().toString()));
+        assertTrue(expectedMessage.contains(person.getRating().toString()));
+        assertTrue(expectedMessage.contains(person.getComment().toString()));
+        for (Tag tag : person.getTags()) {
+            assertTrue(expectedMessage.contains(tag.toString()));
+        }
     }
 }
