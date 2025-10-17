@@ -33,7 +33,7 @@ auditionee management tasks done faster than traditional GUI apps.
 
     * `viewall` : Lists all auditionees.
 
-    * `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee 
+    * `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
        to the AuditionBook.
 
     * `delete 3` : Deletes the 3rd contact shown in the current list.
