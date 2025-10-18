@@ -78,6 +78,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     * 
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -176,6 +177,22 @@ public class MainWindow extends UiPart<Stage> {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
+
+            // Check if this is a ViewCommand by looking for the detailed format
+            boolean isViewCommand = commandResult.getFeedbackToUser().contains("=== AUDITIONEE DETAILS ===");
+
+            if (isViewCommand) {
+                // Expand the result display container for ViewCommand
+                resultDisplayPlaceholder.setPrefHeight(210);
+                resultDisplayPlaceholder.setMinHeight(210);
+                resultDisplayPlaceholder.setMaxHeight(210);
+            } else {
+                // Reset to default height for other commands
+                resultDisplayPlaceholder.setPrefHeight(100);
+                resultDisplayPlaceholder.setMinHeight(100);
+                resultDisplayPlaceholder.setMaxHeight(100);
+            }
+
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
 
             if (commandResult.isShowHelp()) {
