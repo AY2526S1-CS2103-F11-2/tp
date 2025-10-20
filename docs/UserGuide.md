@@ -38,7 +38,7 @@ auditionee management tasks done faster than traditional GUI apps.
 
     * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-    * `sort` : Deletes all contacts.
+    * `clear` : Deletes all contacts.
 
     * `exit` : Exits the app.
 
@@ -156,6 +156,12 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Sorting all persons by rating : `sort`
+
+Sorts all persons by rating in the address book.
+
+Format: `sort`
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.
@@ -219,3 +225,4 @@ the data of your previous AddressBook home folder.
  **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
  **List**   | `list`
  **Help**   | `help`
+ **Sort**   | `sort`
