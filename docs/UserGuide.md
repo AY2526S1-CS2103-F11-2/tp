@@ -128,7 +128,6 @@ Finds persons whose names, instruments, Telegram handles, ratings, or tags conta
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `guitar` will match `Guitar`
 * The order of the keywords does not matter. e.g. `@alice Guitar` will match `Guitar @alice`
 * Only full words will be matched e.g. `Guit` will not match `Guitar`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
