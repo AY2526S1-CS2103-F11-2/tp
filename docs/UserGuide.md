@@ -122,24 +122,26 @@ Examples:
   and `johndoe@example.com` respectively.
 * `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating persons by tag or name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds persons whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* The search is case-insensitive. e.g `guitar` will match `Guitar`
+* The order of the keywords does not matter. e.g. `@alice Guitar` will match `Guitar @alice`
+* Only full words will be matched e.g. `Guit` will not match `Guitar`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  `Guitar @alice` will return every auditionee who either plays the guitar or has the Telegram handle `@alice`
+
 
 Examples:
 
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find Guitar` returns all auditionees whose instrument tag is `Guitar`
+* `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`
+* `find 9` returns auditionees rated `9`
+* `find John` still returns `john` and `John Doe`
+  ![result for 'find alex david'](images/findAlexDavidResult.png) 
 
 ### Copying auditionee details: `copy`
 

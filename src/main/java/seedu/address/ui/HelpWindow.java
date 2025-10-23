@@ -20,7 +20,7 @@ public class HelpWindow extends UiPart<Stage> {
             + "• add - Add a new auditionee\n"
             + "• edit - Edit an existing auditionee\n"
             + "• delete - Delete an auditionee\n"
-            + "• find - Find auditionees by name\n"
+            + "• find - Find auditionees by name, instrument, Telegram handle, rating, or tag\n"
             + "• list - List all auditionees\n"
             + "• viewall - View all auditionees\n"
             + "• view - View detailed info of an auditionee\n"
