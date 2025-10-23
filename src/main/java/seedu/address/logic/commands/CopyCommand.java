@@ -45,7 +45,7 @@ public class CopyCommand extends Command {
 
     /**
      * Creates a CopyCommand with optional filtering parameters
-     * 
+     *
      * @param count Number of top auditionees to copy (null for all)
      * @param instrument Instrument to filter by (null for all instruments)
      */
@@ -57,11 +57,11 @@ public class CopyCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        
+
         List<Person> filteredList = getFilteredAndSortedList(model);
         String formattedOutput = formatPersonList(filteredList);
         copyToClipboard(formattedOutput);
-        
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, filteredList.size()));
     }
 
@@ -81,7 +81,7 @@ public class CopyCommand extends Command {
 
         // Sort by rating in descending order
         persons = persons.stream()
-                .sorted(Comparator.comparing(person -> 
+                .sorted(Comparator.comparing(person ->
                         Integer.parseInt(((Person) person).getRating().rating))
                         .reversed())
                 .collect(Collectors.toList());
@@ -103,7 +103,7 @@ public class CopyCommand extends Command {
         StringBuilder sb = new StringBuilder();
         sb.append("AUDITIONEE LIST\n");
         sb.append("===============\n\n");
-        
+
         int index = 1;
         for (Person person : persons) {
             sb.append(String.format("%d. %s\n", index++, person.getName()));
@@ -114,7 +114,7 @@ public class CopyCommand extends Command {
             sb.append(String.format("   Tags: %s\n", formatTags(person)));
             sb.append("\n");
         }
-        
+
         sb.append(String.format("Total: %d auditionee(s)", persons.size()));
         return sb.toString();
     }
@@ -154,11 +154,11 @@ public class CopyCommand extends Command {
         }
 
         CopyCommand otherCommand = (CopyCommand) other;
-        boolean countEqual = (count == null && otherCommand.count == null) 
+        boolean countEqual = (count == null && otherCommand.count == null)
                 || (count != null && count.equals(otherCommand.count));
         boolean instrumentEqual = (instrument == null && otherCommand.instrument == null)
                 || (instrument != null && instrument.equals(otherCommand.instrument));
-        
+
         return countEqual && instrumentEqual;
     }
 }
