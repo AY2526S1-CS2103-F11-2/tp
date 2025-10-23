@@ -32,6 +32,7 @@ import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
+ * This includes editing of telehandle, instrument, comment, rating and tags.
  */
 public class EditCommand extends Command {
 

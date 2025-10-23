@@ -33,13 +33,12 @@ auditionee management tasks done faster than traditional GUI apps.
 
     * `viewall` : Lists all auditionees.
 
-    * `add <name>; <telegramhandle>; <instrument>; <comments>; <final score out of 10> ` : Adds an auditionee named
-      `John 
-    Doe` to the AuditionBook.
+    * `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
+       to the AuditionBook.
 
     * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-    * `sort` : Deletes all contacts.
+    * `clear` : Deletes all contacts.
 
     * `exit` : Exits the app.
 
@@ -123,25 +122,47 @@ Examples:
   and `johndoe@example.com` respectively.
 * `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating persons by tag or name: `find`
 
-Finds persons whose names contain any of the given keywords.
+Finds persons whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* The search is case-insensitive. e.g `guitar` will match `Guitar`
+* The order of the keywords does not matter. e.g. `@alice Guitar` will match `Guitar @alice`
+* Only full words will be matched e.g. `Guit` will not match `Guitar`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  `Guitar @alice` will return every auditionee who either plays the guitar or has the Telegram handle `@alice`
+
 
 Examples:
 
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find Guitar` returns all auditionees whose instrument tag is `Guitar`
+* `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`
+* `find 9` returns auditionees rated `9`
+* `find John` still returns `john` and `John Doe`
+  ![result for 'find alex david'](images/findAlexDavidResult.png) 
 
+### Copying auditionee details: `copy`
+
+Copies auditionee details to the system clipboard in a formatted table. You can optionally filter by instrument and limit to top performers by rating.
+
+Format: `copy [b/COUNT] [i/INSTRUMENT]`
+
+* Copies auditionee information to clipboard for easy sharing or documentation
+* Without parameters, copies all auditionees in the current list
+* `b/COUNT` limits output to top COUNT auditionees sorted by rating (highest to lowest)
+* `i/INSTRUMENT` filters to show only auditionees who play the specified instrument
+* Parameters can be combined to get top N performers of a specific instrument
+* The output is formatted as a table with columns for name, telehandle, instrument, rating, comment, and tags
+
+Examples:
+* `copy` copies all auditionees to clipboard
+* `copy b/5` copies the top 5 auditionees by rating
+* `copy i/Piano` copies all piano players
+* `copy b/5 i/Piano` copies the top 5 piano players by rating
+* `copy b/3 i/Guitar` copies the top 3 guitarists by rating
+                  
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -156,6 +177,12 @@ Examples:
 
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+### Sorting all persons by rating : `sort`
+
+Sorts all persons by rating in the address book.
+
+Format: `sort`
 
 ### Clearing all entries : `clear`
 
@@ -211,12 +238,21 @@ the data of your previous AddressBook home folder.
 
 ## Command summary
 
- Action     | Format, Examples                                                                                                                                                      
+ Action     | Format, Examples
 ------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
  **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` 
- **Clear**  | `clear`                                                                                                                                                               
+ **Clear**  | `clear`                                                                                                                 
+ **Copy**   | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                                                                                   
  **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
  **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
  **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
  **List**   | `list`                                                                                                                                                                
  **Help**   | `help`                                                                                                                                                                
+ **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+ **Clear**  | `clear`
+ **Delete** | `delete INDEX`<br> e.g., `delete 3`
+ **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+ **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+ **List**   | `list`
+ **Help**   | `help`
+ **Sort**   | `sort`

@@ -334,13 +334,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
 | `* * *`  | user                                       | add a new person               |                                                                        |
 | `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | user                                       | find a person by name or tag   | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 | `* * *`  | club leader   | view all auditionees with indices           | identify the correct record to edit or delete     |
 | `* * *`  | club leader   | delete an auditionee by index               | remove incorrect or outdated entries              |
 | `* * *`  | club leader   | add a new auditionee                        | keep the audition list up to date                 |
-| `* * *`  | club leader   | find auditionees by name/instrument         | locate a record without scanning the full list    |
+| `* * *`  | club leader   | find auditionees by name, instrument, handle, or rating | locate a record without scanning the full list    |
 | `* *`    | club leader   | edit an auditionee’s details                | correct mistakes without re-adding the entry      |
 | `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
 | `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
@@ -354,10 +354,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
 otherwise)
 
-Use case 1: UC01 – View all auditionees.  
-Actors: User (audition organizer)  
-Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle), 
-etc.)  
+Use case 1: UC01 – View all auditionees.
+Actors: User (audition organizer)
+Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle),
+etc.)
 
 **MSS**
 
@@ -365,16 +365,16 @@ etc.)
 2.  AddressBook shows a list of auditionees with their details.
     Use case ends.
 
-Use case 2: UC02 – Sort all auditionees.  
-Actors: User (audition organizer)  
+Use case 2: UC02 – Sort all auditionees.
+Actors: User (audition organizer)
 Goal: Sort and display all auditionees with their details according to instrument or rating.
 
-**MSS** 
+**MSS**
 
 1.  Leader requests to sort the auditionees.
-2.  AuditionNUS accepts the sorting criteria (e.g., by name, score, instrument, or audition date). 
-3.  AuditionNUS retrieves the list of auditionees. 
-4.  AuditionNUS sorts the list based on the selected criteria. 
+2.  AuditionNUS accepts the sorting criteria (e.g., by name, score, instrument, or audition date).
+3.  AuditionNUS retrieves the list of auditionees.
+4.  AuditionNUS sorts the list based on the selected criteria.
 5.  AuditionNUS displays the sorted list of auditionees.
     Use case ends.
 
@@ -387,15 +387,15 @@ Goal: Sort and display all auditionees with their details according to instrumen
   - 3a1. AuditionNUS shows “No auditionees available to sort.” Use case ends.
 
 
-Use case 3: UC03 – Add new auditionee.  
-Actors: User (audition organizer)  
+Use case 3: UC03 – Add new auditionee.
+Actors: User (audition organizer)
 Goal: Add the details for new auditionees.
 
-**MSS** 
+**MSS**
 
 1.  User requests to add new auditionee.
-2.  User enters auditionee details. 
-3.  System saves the details of new auditionee. 
+2.  User enters auditionee details.
+3.  System saves the details of new auditionee.
 4.  System displays success message, as well as the details of added auditonee.
     Use case ends.
 
@@ -429,15 +429,15 @@ Goal: Add the details for new auditionees.
 
 **Extensions**
 
-* 2a. The list is empty.  
+* 2a. The list is empty.
   → Use case ends.
 
-* 3a. INDEX is not an integer or out of range.  
-  3a1. System shows: `Please enter a valid index.`  
+* 3a. INDEX is not an integer or out of range.
+  3a1. System shows: `Please enter a valid index.`
   3a2. Use case resumes at step 3.
 
-* 5a. The target auditionee is no longer present (e.g., concurrently removed).  
-  5a1. System shows: `Auditionee not found.`  
+* 5a. The target auditionee is no longer present (e.g., concurrently removed).
+  5a1. System shows: `Auditionee not found.`
   5a2. Use case ends.
 
 **Command format and validation (for reference)**
@@ -455,7 +455,7 @@ Goal: Add the details for new auditionees.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Data mutations (add/edit/delete) are atomic; no partial writes.
-5.  Optional command history enables tracing changes 
+5.  Optional command history enables tracing changes.
 6.  App must not crash when main operations are conducted.
 7.  App should start up in less than **2 seconds**.
 
