@@ -24,6 +24,7 @@ public class HelpWindow extends UiPart<Stage> {
             + "• list - List all auditionees\n"
             + "• viewall - View all auditionees\n"
             + "• view - View detailed info of an auditionee\n"
+            + "• copy - Copy auditionee information to clipboard\n"
             + "• clear - Clear all auditionees\n"
             + "• help - Show this help message\n"
             + "• exit - Exit the application\n\n"
