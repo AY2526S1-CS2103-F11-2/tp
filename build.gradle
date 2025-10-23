@@ -78,3 +78,7 @@ sourceSets {
         }
     }
 }
+
+run {
+    enableAssertions = true
+}
