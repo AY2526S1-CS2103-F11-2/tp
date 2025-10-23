@@ -5,10 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
-
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 import seedu.address.model.tag.Tag;
