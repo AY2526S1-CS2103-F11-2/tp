@@ -45,7 +45,7 @@ public class CopyCommand extends Command {
 
     /**
      * Creates a CopyCommand with optional filtering parameters
-     * 
+     *
      * @param count Number of top auditionees to copy (null for all)
      * @param instrument Instrument to filter by (null for all instruments)
      */
@@ -57,11 +57,11 @@ public class CopyCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        
+
         List<Person> filteredList = getFilteredAndSortedList(model);
         String formattedOutput = formatPersonList(filteredList);
         copyToClipboard(formattedOutput);
-        
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, filteredList.size()));
     }
 
@@ -81,7 +81,7 @@ public class CopyCommand extends Command {
 
         // Sort by rating in descending order
         persons = persons.stream()
-                .sorted(Comparator.comparing(person -> 
+                .sorted(Comparator.comparing(person ->
                         Integer.parseInt(((Person) person).getRating().rating))
                         .reversed())
                 .collect(Collectors.toList());
@@ -101,30 +101,30 @@ public class CopyCommand extends Command {
      */
     private String formatPersonList(List<Person> persons) {
         StringBuilder sb = new StringBuilder();
-        
+
         // Dynamic header based on filters
         String title = generateTitle();
         sb.append(title).append("\n");
         sb.append("=".repeat(title.length())).append("\n\n");
-        
+
         // Filter information if applicable
         if (count != null || instrument != null) {
             sb.append(generateFilterInfo());
         }
-        
+
         // Summary section
         sb.append(generateSummary(persons));
         sb.append("\n");
-        
+
         // Individual entries
         int index = 1;
         for (Person person : persons) {
             sb.append(formatPersonEntry(person, index++));
         }
-        
+
         // Footer
         sb.append(String.format("Total: %d auditionee(s)\n", persons.size()));
-        
+
         return sb.toString();
     }
 
@@ -133,7 +133,7 @@ public class CopyCommand extends Command {
      */
     private String generateTitle() {
         StringBuilder title = new StringBuilder();
-        
+
         if (count != null && instrument != null) {
             // Both filters: "TOP 5 PIANO PLAYERS"
             title.append(String.format("TOP %d %s PLAYERS", count, instrument.toUpperCase()));
@@ -147,7 +147,7 @@ public class CopyCommand extends Command {
             // No filters: "ALL AUDITIONEES"
             title.append("ALL AUDITIONEES");
         }
-        
+
         return title.toString();
     }
 
@@ -157,14 +157,14 @@ public class CopyCommand extends Command {
     private String generateFilterInfo() {
         StringBuilder sb = new StringBuilder();
         sb.append("Filter Applied:\n");
-        
+
         if (count != null) {
             sb.append(String.format("  - Showing top %d by rating\n", count));
         }
         if (instrument != null) {
             sb.append(String.format("  - Instrument: %s\n", instrument));
         }
-        
+
         sb.append("\n");
         return sb.toString();
     }
@@ -174,15 +174,15 @@ public class CopyCommand extends Command {
      */
     private String generateSummary(List<Person> persons) {
         StringBuilder sb = new StringBuilder();
-        
+
         double avgRating = calculateAverageRating(persons);
         int highestRating = getHighestRating(persons);
         int lowestRating = getLowestRating(persons);
-        
+
         sb.append("Summary:\n");
         sb.append(String.format("  Average Rating: %.1f/10\n", avgRating));
         sb.append(String.format("  Highest: %d/10 | Lowest: %d/10\n", highestRating, lowestRating));
-        
+
         return sb.toString();
     }
 
@@ -221,21 +221,21 @@ public class CopyCommand extends Command {
      */
     private String formatPersonEntry(Person person, int index) {
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append(String.format("%d. %s\n", index, person.getName()));
         sb.append(String.format("   Telehandle: %s\n", person.getTeleHandle()));
         sb.append(String.format("   Instrument: %s\n", person.getInstrument()));
-        sb.append(String.format("   Rating: %s/10 %s\n", 
+        sb.append(String.format("   Rating: %s/10 %s\n",
                 person.getRating(), generateStars(person.getRating().rating)));
         sb.append(String.format("   Comment: %s\n", person.getComment()));
-        
+
         String tags = formatTags(person);
         if (!tags.isEmpty()) {
             sb.append(String.format("   Tags: %s\n", tags));
         }
-        
+
         sb.append("\n");
-        
+
         return sb.toString();
     }
 
@@ -246,7 +246,7 @@ public class CopyCommand extends Command {
         int rating = Integer.parseInt(ratingStr);
         int stars = (rating + 1) / 2;
         int emptyStars = 5 - stars;
-        
+
         return "★".repeat(stars) + "☆".repeat(emptyStars);
     }
 
@@ -285,11 +285,11 @@ public class CopyCommand extends Command {
         }
 
         CopyCommand otherCommand = (CopyCommand) other;
-        boolean countEqual = (count == null && otherCommand.count == null) 
+        boolean countEqual = (count == null && otherCommand.count == null)
                 || (count != null && count.equals(otherCommand.count));
         boolean instrumentEqual = (instrument == null && otherCommand.instrument == null)
                 || (instrument != null && instrument.equals(otherCommand.instrument));
-        
+
         return countEqual && instrumentEqual;
     }
 }
