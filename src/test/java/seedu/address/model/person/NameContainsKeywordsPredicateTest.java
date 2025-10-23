@@ -40,43 +40,46 @@ public class NameContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void test_nameContainsKeywords_returnsTrue() {
+    public void test_personContainsKeywords_returnsTrue() {
         // One keyword
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Alice"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        NameContainsKeywordsPredicate predicate =
+                new NameContainsKeywordsPredicate(Collections.singletonList("Alice"));
+        // Matches instrument
+        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Guitar"));
+        assertTrue(predicate.test(new PersonBuilder().withInstrument("Guitar").build()));
 
-        // Multiple keywords
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        // Matches handle
+        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("@Handle"));
+        assertTrue(predicate.test(new PersonBuilder().withTeleHandle("@Handle").build()));
 
-        // Only one matching keyword
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Carol").build()));
+        // Matches rating
+        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("9"));
+        assertTrue(predicate.test(new PersonBuilder().withRating("9").build()));
 
-        // Mixed-case keywords
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        // Matches tag
+        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("friends"));
+        assertTrue(predicate.test(new PersonBuilder().withTags("Friends").build()));
     }
 
     @Test
-    public void test_nameDoesNotContainKeywords_returnsFalse() {
+    public void test_personDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").build()));
 
         // Non-matching keyword
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Carol"));
+        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Carol"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
 
-        // Keywords match phone, email and address, but does not match name
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+        // Keywords match phone and email, but not the other identifying fields
+        predicate = new NameContainsKeywordsPredicate(Arrays.asList("12345", "alice@example.com"));
         assertFalse(predicate.test(new PersonBuilder().withName("Alice").withPhone("12345")
-                .withEmail("alice@email.com").withAddress("Main Street").build()));
+                .withEmail("alice@example.com").build()));
     }
 
     @Test
     public void toStringMethod() {
-        List<String> keywords = List.of("keyword1", "keyword2");
+        List<String> keywords = Arrays.asList("keyword", "pencil");
         NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(keywords);
 
         String expected = NameContainsKeywordsPredicate.class.getCanonicalName() + "{keywords=" + keywords + "}";

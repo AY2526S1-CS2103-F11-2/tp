@@ -7,7 +7,10 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.commons.util.ToStringBuilder;
 
 /**
- * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
+ * Tests that a {@code Person}'s identifying fields match any of the keywords given.
+ *
+ * <p>The search is performed against the person's name, Telegram handle, instrument, rating and
+ * associated tags.</p>
  */
 public class NameContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
@@ -18,8 +21,16 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
 
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        return keywords.stream().anyMatch(keyword -> matchesPersonField(person, keyword));
+    }
+
+    private boolean matchesPersonField(Person person, String keyword) {
+        return StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword)
+                || StringUtil.containsWordIgnoreCase(person.getTeleHandle().telehandle, keyword)
+                || StringUtil.containsWordIgnoreCase(person.getInstrument().instrumentName, keyword)
+                || StringUtil.containsWordIgnoreCase(person.getRating().rating, keyword)
+                || person.getTags().stream()
+                .anyMatch(tag -> StringUtil.containsWordIgnoreCase(tag.tagName, keyword));
     }
 
     @Override
@@ -33,8 +44,8 @@ public class NameContainsKeywordsPredicate implements Predicate<Person> {
             return false;
         }
 
-        NameContainsKeywordsPredicate otherNameContainsKeywordsPredicate = (NameContainsKeywordsPredicate) other;
-        return keywords.equals(otherNameContainsKeywordsPredicate.keywords);
+        NameContainsKeywordsPredicate otherPredicate = (NameContainsKeywordsPredicate) other;
+        return keywords.equals(otherPredicate.keywords);
     }
 
     @Override
