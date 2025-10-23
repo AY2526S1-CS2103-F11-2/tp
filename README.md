@@ -20,6 +20,7 @@ With this app, audition organizers can easily keep track of auditionees, update 
 ## 🚀 Features
 * **View all auditionees**: List all auditionees currently stored in the app.
 * **Add new auditionee**: Add a new entry with details like name, instrument, rating, comments, and contact.
+* **Copy auditionee details**: Copy details of auditionees to clipboard.
 * **Delete auditionee**: Remove an auditionee’s record when it’s no longer needed.
 * **Sort auditionees**: Sort the list of auditionees (e.g. by name, rating, or instrument) for easier navigation.
 * **View auditionee information**: Display the full details of a selected auditionee in a clear and structured format.
