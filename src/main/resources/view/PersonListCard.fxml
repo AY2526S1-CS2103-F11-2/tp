@@ -27,17 +27,15 @@
             <Region fx:constant="USE_PREF_SIZE" />
           </minWidth>
         </Label>
-        <Label fx:id="name" styleClass="cell_big_label" />
+        <Label fx:id="name" text="\$name" styleClass="cell_big_label" />
       </HBox>
 
       <!-- Tags -->
       <FlowPane fx:id="tags" />
-
-      <!-- New custom fields -->
-      <Label fx:id="telehandle" styleClass="cell_small_label" />
-      <Label fx:id="instrument" styleClass="cell_small_label" />
-      <Label fx:id="comment" styleClass="cell_small_label" />
-      <Label fx:id="rating" styleClass="cell_small_label" />
+      <Label fx:id="telehandle" styleClass="cell_small_label" text="\$telehandle" />
+      <Label fx:id="instrument" styleClass="cell_small_label" text="\$instrument" />
+      <Label fx:id="rating" styleClass="cell_small_label" text="\$rating" />
+      <Label fx:id="comment" styleClass="cell_small_label" text="\$comment" />
     </VBox>
   </GridPane>
 </HBox>
