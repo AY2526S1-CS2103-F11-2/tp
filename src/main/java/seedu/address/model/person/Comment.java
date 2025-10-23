@@ -8,11 +8,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Ensures the comment is not blank and can contain any characters.
  */
 public class Comment {
-    public static final String MESSAGE_CONSTRAINTS =
-            "Comments can contain any characters and should not be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Comments can contain any characters and should not be blank";
 
     /*
-     * Accepts any characters as long as there is at least one non-whitespace character.
+     * Accepts any characters as long as there is at least one non-whitespace
+     * character.
      */
     public static final String VALIDATION_REGEX = ".*\\S.*";
 
@@ -20,6 +20,7 @@ public class Comment {
 
     /**
      * Constructs an {@code Instrument}.
+     *
      * @param commentText A valid instrument name.
      */
     public Comment(String commentText) {
@@ -43,8 +44,8 @@ public class Comment {
     @Override
     public boolean equals(Object other) {
         return other == this
-                || other instanceof Instrument
-                && commentText.equals(((Comment) other).commentText);
+                || other instanceof Comment
+                        && commentText.equals(((Comment) other).commentText);
     }
 
     @Override
