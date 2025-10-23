@@ -141,7 +141,7 @@ Examples:
 * `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`
 * `find 9` returns auditionees rated `9`
 * `find John` still returns `john` and `John Doe`
-  ![result for 'find alex david'](images/findAlexDavidResult.png) 
+  ![result for 'find 10'](images/find10Result.png) 
 
 ### Deleting a person : `delete`
 
