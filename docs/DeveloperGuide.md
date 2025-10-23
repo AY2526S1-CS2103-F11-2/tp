@@ -334,13 +334,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
 | `* * *`  | user                                       | add a new person               |                                                                        |
 | `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | user                                       | find a person by name or tag   | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 | `* * *`  | club leader   | view all auditionees with indices           | identify the correct record to edit or delete     |
 | `* * *`  | club leader   | delete an auditionee by index               | remove incorrect or outdated entries              |
 | `* * *`  | club leader   | add a new auditionee                        | keep the audition list up to date                 |
-| `* * *`  | club leader   | find auditionees by name/instrument         | locate a record without scanning the full list    |
+| `* * *`  | club leader   | find auditionees by name, instrument, handle, or rating | locate a record without scanning the full list    |
 | `* *`    | club leader   | edit an auditionee’s details                | correct mistakes without re-adding the entry      |
 | `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
 | `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
