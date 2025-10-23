@@ -1,7 +1,8 @@
 # AuditionNUS 🎶
 
 [![CI Status](https://github.com/AY2526S1-CS2103-F11-2/tp/actions/workflows/gradle.yml/badge.svg)](https://github.com/AY2526S1-CS2103-F11-2/tp/actions/workflows/gradle.yml)
-![Ui](docs/images/Ui.png)
+
+![Ui](docs/images/AuditionNUSUi.png)
 
 This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
 
