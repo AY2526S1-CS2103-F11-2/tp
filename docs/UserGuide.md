@@ -33,9 +33,8 @@ auditionee management tasks done faster than traditional GUI apps.
 
     * `viewall` : Lists all auditionees.
 
-    * `add <name>; <telegramhandle>; <instrument>; <comments>; <final score out of 10> ` : Adds an auditionee named
-      `John 
-    Doe` to the AuditionBook.
+    * `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
+       to the AuditionBook.
 
     * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -211,12 +210,12 @@ the data of your previous AddressBook home folder.
 
 ## Command summary
 
- Action     | Format, Examples                                                                                                                                                      
+ Action     | Format, Examples
 ------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague` 
- **Clear**  | `clear`                                                                                                                                                               
- **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
- **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                           
- **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
- **List**   | `list`                                                                                                                                                                
- **Help**   | `help`                                                                                                                                                                
+ **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
+ **Clear**  | `clear`
+ **Delete** | `delete INDEX`<br> e.g., `delete 3`
+ **Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+ **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+ **List**   | `list`
+ **Help**   | `help`
