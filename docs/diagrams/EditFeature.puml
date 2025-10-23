@@ -1,0 +1,84 @@
+@startuml
+title EditCommand Class Diagram
+
+' ==========================
+'  CLASS DEFINITIONS
+' ==========================
+
+abstract class Command {
+    + execute(model: Model): CommandResult
+}
+
+class EditCommand {
+    - index: Index
+    - editPersonDescriptor: EditPersonDescriptor
+    --
+    + execute(model: Model): CommandResult
+    - createEditedPerson(personToEdit: Person, editPersonDescriptor: EditPersonDescriptor): Person
+    + equals(Object): boolean
+    + toString(): String
+}
+
+class EditPersonDescriptor {
+    - name: Name
+    - telehandle: TeleHandle
+    - instrument: Instrument
+    - comment: Comment
+    - rating: Rating
+    - tags: Set<Tag>
+    --
+    + isAnyFieldEdited(): boolean
+    + getName(): Optional<Name>
+    + getTeleHandle(): Optional<TeleHandle>
+    + getInstrument(): Optional<Instrument>
+    + getComment(): Optional<Comment>
+    + getRating(): Optional<Rating>
+    + getTags(): Optional<Set<Tag>>
+}
+
+interface Model {
+    + getFilteredPersonList(): List<Person>
+    + setPerson(target: Person, editedPerson: Person)
+    + hasPerson(person: Person): boolean
+    + updateFilteredPersonList(predicate: Predicate<Person>)
+}
+
+class Person {
+    - name: Name
+    - teleHandle: TeleHandle
+    - instrument: Instrument
+    - comment: Comment
+    - rating: Rating
+    - tags: Set<Tag>
+}
+
+class CommandResult {
+    - feedbackToUser: String
+    --
+    + getFeedback(): String
+}
+
+' ==========================
+'  RELATIONSHIPS
+' ==========================
+
+Command <|-- EditCommand
+EditCommand *-- EditPersonDescriptor : contains
+EditCommand ..> Model : uses
+EditCommand ..> Person : edits
+EditCommand --> CommandResult : returns
+EditPersonDescriptor ..> Person : builds
+Model --> Person : manages
+
+' ==========================
+'  STYLE SETTINGS
+' ==========================
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam classBackgroundColor #F9F9F9
+skinparam classBorderColor #555555
+skinparam titleFontSize 16
+skinparam classFontSize 13
+skinparam linetype ortho
+
+@enduml
