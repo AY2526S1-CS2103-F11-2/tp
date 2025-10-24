@@ -149,8 +149,7 @@ How the parsing works:
 **API** : [
 `Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
-
+![ModelClassDiagram.png](images/ModelClassDiagram.png)
 
 The `Model` component,
 
@@ -194,31 +193,6 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
-
-### Edit feature
-
-#### Implementation
-The edit mechanism is facilitated by the `EditCommand` class. 
-It allows users to modify details of an existing person in the address.
-
-Given below is an example usage scenario and how the edit mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `AddressBook` will be initialized with the
-initial address book state.
-
-Step 2. The user adds a new person using the command `add n/Tze Hsien h/@TzHsien i/Keyboard r/3 c/Rusty player, stopped 
-theory at Grade 5`.
-
-![img.png](images/BeforeEditImg.png)
-
-Step 3. The user executes `edit 2 h/@HottestManAlive i/Saxophone` command to edit the 2nd person's 
-telehandle and instrument field in the address book.
-
-![AfterEditImg.png](images/AfterEditImg.png)
-
-Below is the UML diagram illustrating the structure of the Edit feature:
-
-![EditCommandDiagram.png](images/EditCommandDiagram.png)
 
 ### \[Proposed\] Undo/redo feature
 
