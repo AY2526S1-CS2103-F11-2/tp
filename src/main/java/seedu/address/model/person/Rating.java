@@ -9,8 +9,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class Rating {
     public static final String MESSAGE_CONSTRAINTS =
-            "Rating should only contain numbers on a scale of 0 to 10";
-    public static final String VALIDATION_REGEX = "(?:[0-9]|10)$";
+            "Rating should only contain numbers on a scale of 0 to 10, in intervals of 0.5";
+    public static final String VALIDATION_REGEX = "^(?:10|\\d(?:\\.5)?)$";
     public final String rating;
 
     /**
