@@ -22,7 +22,11 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " guitar ";
 
     private final NameContainsKeywordsPredicate predicate;
-
+    /**
+     * Creates a FindCommand to find persons matching the given predicate.
+     *
+     * @param predicate the predicate used to filter persons
+     */
     public FindCommand(NameContainsKeywordsPredicate predicate) {
         assert predicate != null : "Predicate should not be null";
         this.predicate = predicate;
