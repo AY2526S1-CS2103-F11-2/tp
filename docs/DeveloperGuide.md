@@ -370,13 +370,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
 | `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
 | `*`      | club leader   | see a confirmation/prompt for destructive ops| avoid accidental data loss                        |
-| `*`      | club leader   | see error messages for invalid indices      | understand how to correct my command              |
-| `*`      | club leader   | export auditionees                          | share lists with the team                         |
+| `**`      | club leader   | see error messages for invalid indices      | understand how to correct my command              |
+| `**`      | club leader   | export auditionees                          | share lists with the team                         |
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
+(For all use cases below, the **System** is the `AuditionNUS` and the **Actor** is the `user`, unless specified
 otherwise)
 
 Use case 1: UC01 – View all auditionees.
@@ -500,10 +500,8 @@ Goal: Add the details for new auditionees.
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+**Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
-
-</div>
 
 ### Launch and shutdown
 
