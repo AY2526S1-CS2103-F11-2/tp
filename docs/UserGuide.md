@@ -34,7 +34,7 @@ your auditionee management tasks done faster than traditional GUI apps.
    **Mac users:** Ensure you have the precise JDK version
    prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F11-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AuditionNUS.
 
@@ -229,15 +229,15 @@ the data of your previous AuditionNUS home folder.
 
 ## Command summary
 
- Action       | Format, Examples                                                                                                                                                
+ Action       | Format, Examples
 --------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
- **View All** | `viewall`                                                                                                                                                       
- **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
- **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                       
- **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                             
- **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`                                      
- **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                      
- **Help**     | `help`                                                                                                                                                          
- **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                             
- **Sort**     | `sort`                                                                                                                                                          
- **Exit**     | `exit`                                                                                                                                                          
+ **View All** | `viewall`
+ **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
+ **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+ **Help**     | `help`
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Sort**     | `sort`
+ **Exit**     | `exit`
