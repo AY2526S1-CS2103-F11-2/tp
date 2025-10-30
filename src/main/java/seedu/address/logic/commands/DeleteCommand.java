@@ -28,14 +28,7 @@ public class DeleteCommand extends Command {
 
     private final Index targetIndex;
 
-    /**
-     * Creates a DeleteCommand to delete the person at the specified {@code targetIndex}.
-     *
-     * @param targetIndex Index of the person to delete
-     */
     public DeleteCommand(Index targetIndex) {
-        assert targetIndex != null : "Target index should not be null";
-        assert targetIndex.getZeroBased() >= 0 : "Target index should be non-negative";
         this.targetIndex = targetIndex;
     }
 
@@ -43,17 +36,14 @@ public class DeleteCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
-        assert lastShownList != null : "Filtered person list should not be null";
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
-        assert model.hasPerson(personToDelete) : "Person to delete should exist in the model";
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.deletePerson(personToDelete);
-        assert !model.hasPerson(personToDelete) : "Person should be deleted from the model";
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
     }
 
