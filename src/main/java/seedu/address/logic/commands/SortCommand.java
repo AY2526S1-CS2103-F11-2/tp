@@ -31,9 +31,9 @@ public class SortCommand extends Command {
 
         // Sort by rating (highest to lowest)
         allPersons.sort((person1, person2) -> {
-            int rating1 = Integer.parseInt(person1.getRating().toString());
-            int rating2 = Integer.parseInt(person2.getRating().toString());
-            return Integer.compare(rating2, rating1); // Descending order
+            float rating1 = Float.parseFloat(person1.getRating().toString());
+            float rating2 = Float.parseFloat(person2.getRating().toString());
+            return Float.compare(rating2, rating1); // Descending order
         });
 
         // Create a new AddressBook with the sorted persons
