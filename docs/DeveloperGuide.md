@@ -366,21 +366,17 @@ etc.)
 
 Use case 2: UC02 – Sort all auditionees.
 Actors: User (audition organizer)
-Goal: Sort and display all auditionees with their details according to instrument or rating.
+Goal: Sort and display all auditionees with their details according to rating.
 
 **MSS**
 
 1.  Leader requests to sort the auditionees.
-2.  AuditionNUS accepts the sorting criteria (e.g., by name, score, instrument, or audition date).
-3.  AuditionNUS retrieves the list of auditionees.
-4.  AuditionNUS sorts the list based on the selected criteria.
-5.  AuditionNUS displays the sorted list of auditionees.
+2.  AuditionNUS retrieves the list of auditionees.
+3.  AuditionNUS sorts the list.
+4.  AuditionNUS displays the sorted list of auditionees.
     Use case ends.
 
 **Extensions**
-
-- 2a. Invalid sorting criteria entered
-  - 2a1 AuditionNUS shows “Invalid sorting option. Please select a valid criterion.” Use case ends.
 
 - 3a. No auditionees found in the system.
   - 3a1. AuditionNUS shows “No auditionees available to sort.” Use case ends.
@@ -409,8 +405,6 @@ Goal: Add the details for new auditionees.
 *a. At any time, User chooses to cancel the addition of new auditionee.
    - Use case ends.
 
-*{More to be added}*
-
 **Use case: Delete an auditionee**
 
 - **Actor**: Club leader
@@ -421,10 +415,10 @@ Goal: Add the details for new auditionees.
 
 1. User requests to list auditionees (e.g., `viewAll`).
 2. System shows the list with indices.
-3. User enters `deleteAuditionee(INDEX)`, e.g., `deleteAuditionee(2)`.
+3. User enters `delete INDEX`, e.g., `delete 2`.
 4. System validates the index.
 5. System deletes the corresponding auditionee.
-6. System shows: `Auditionee [Name] has been successfully deleted.`
+6. System shows: `Deleted Person: john; TeleHandle: @johnboy; Instrument: guitar; Rating: 9; Comment: very good; Tags: [friends]`
 
 **Extensions**
 
@@ -432,20 +426,16 @@ Goal: Add the details for new auditionees.
   → Use case ends.
 
 * 3a. INDEX is not an integer or out of range.
-  3a1. System shows: `Please enter a valid index.`
+  3a1. System shows: `The person index provided is invalid.`
   3a2. Use case resumes at step 3.
-
-* 5a. The target auditionee is no longer present (e.g., concurrently removed).
-  5a1. System shows: `Auditionee not found.`
-  5a2. Use case ends.
 
 **Command format and validation (for reference)**
 
-* Command: `deleteAuditionee(INDEX)`
+* Command: `delete INDEX`
 * Acceptable values: `INDEX` is an integer corresponding to the currently displayed list.
 * Error messages:
-    * `Auditionee index not found!` when the index does not exist in the system
-    * `Please enter a valid index.` when input is not a valid integer or out of range
+    * `The person index provided is invalid.` when the index does not exist in the system
+    * `The person index provided is invalid.` when input is not a valid integer or out of range
 * Rationale: Using the displayed index avoids confusion across potential duplicate names.
 
 ### Non-Functional Requirements
@@ -458,13 +448,11 @@ Goal: Add the details for new auditionees.
 6.  App must not crash when main operations are conducted.
 7.  App should start up in less than **2 seconds**.
 
-*{More to be added}*
-
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-  **Auditionee**: A person registered to audition for the NUS Music Club.
+* **Auditionee**: A person registered to audition for the NUS Music Club.
 * **Index**: A 1-based integer referencing an item in the currently displayed list.
 * **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
 * **Validation**: Checking that user input (e.g., index) is syntactically and semantically acceptable.
@@ -477,46 +465,15 @@ Given below are instructions to test the app manually.
 **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
 
-### Launch and shutdown
-
-1. Initial launch
-
-    1. Download the jar file and copy into an empty folder
-
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
-       optimum.
-
-1. Saving window preferences
-
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
-
-### Deleting a person
-
-1. Deleting a person while all persons are being shown
-
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
-       Timestamp in the status bar is updated.
-
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+ Action       | Format, Examples
+--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
+ **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`
+ **Exit**     | `exit`
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+ **Help**     | `help`
+ **Sort**     | `sort`
+ **View**     | `view INDEX` <br> e.g., `view 3`
+ **View All** | `viewall`
