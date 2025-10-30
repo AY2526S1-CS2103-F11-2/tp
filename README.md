@@ -24,3 +24,6 @@ With this app, audition organizers can easily keep track of auditionees, update 
 * **Delete auditionee**: Remove an auditionee’s record when it’s no longer needed.
 * **Sort auditionees**: Sort the list of auditionees (e.g. by name, rating, or instrument) for easier navigation.
 * **View auditionee information**: Display the full details of a selected auditionee in a clear and structured format.
+* **Edit auditionee details**: Update existing records to reflect new information or corrections.
+* **Find auditionees**: Search for auditionees by name or instrument to quickly locate specific
+* **Help command**: Access a list of available commands and their usage instructions.
