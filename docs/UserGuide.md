@@ -4,11 +4,27 @@ title: User Guide
 ---
 
 AuditionNUS is a **desktop app for managing auditionee information, optimized for use via a Command Line Interface**
-(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your
-auditionee management tasks done faster than traditional GUI apps.
+(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AuditionNUS can get
+your auditionee management tasks done faster than traditional GUI apps.
 
-- Table of Contents
-  {:toc}
+# Table of Contents
+
+- [Quick Start](#quick-start)
+- [Features](#features)
+    - [Viewing Help: `help`](#viewing-help--help)
+    - [Adding an Auditionee: `add`](#adding-a-person-add)
+    - [Listing All Auditionees: `viewall`](#listing-all-persons--viewall)
+    - [Editing an Auditionee: `edit`](#editing-a-person--edit)
+    - [Finding Auditionees: `find`](#locating-persons-by-tag-or-name-find)
+    - [Copying Auditionee Details: `copy`](#copying-auditionee-details-copy)
+    - [Deleting an Auditionee: `delete`](#deleting-a-person--delete)
+    - [Sorting Auditionees by Rating: `sort`](#sorting-all-persons-by-rating--sort)
+    - [Exiting the Program: `exit`](#exiting-the-program--exit)
+    - [Saving the Data](#saving-the-data)
+    - [Editing the Data File](#editing-the-data-file)
+    - [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+- [FAQ](#faq)
+- [Command Summary](#command-summary)
 
 ---
 
@@ -18,7 +34,7 @@ auditionee management tasks done faster than traditional GUI apps.
    **Mac users:** Ensure you have the precise JDK version
    prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F11-2/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your AuditionNUS.
 
@@ -31,16 +47,16 @@ auditionee management tasks done faster than traditional GUI apps.
    open the help window.<br>
    Some example commands you can try:
 
-   - `viewall` : Lists all auditionees.
+    - `viewall` : Lists all auditionees.
 
-   - `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
-     to the AuditionBook.
+    - `add n/<name> h/<telegramhandle> i/<instrument> c/<comments> r/<final score out of 10> ` : Adds an auditionee
+      to the AuditionBook.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   - `clear` : Deletes all contacts.
+    - `clear` : Deletes all contacts.
 
-   - `exit` : Exits the app.
+    - `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -50,7 +66,7 @@ auditionee management tasks done faster than traditional GUI apps.
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+**Notes about the command format:**<br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
@@ -89,14 +105,13 @@ Format: `add n/NAME t/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]…​`
 
 **Tip:** A person can have any number of tags (including 0)
 
-
-e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
+e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
 
 ### Listing all persons : `viewall`
 
 Shows a list of all persons recorded in AuditionNUS.
 
-Format: `list`
+Format: `viewall`
 
 ### Editing a person : `edit`
 
@@ -135,7 +150,8 @@ Examples:
 
 ### Copying auditionee details: `copy`
 
-Copies auditionee details to the system clipboard in a formatted table. You can optionally filter by instrument and limit to top performers by rating.
+Copies auditionee details to the system clipboard in a formatted table. You can optionally filter by instrument and
+limit to top performers by rating.
 
 Format: `copy [b/COUNT] [i/INSTRUMENT]`
 
@@ -175,12 +191,6 @@ Sorts all persons by rating in AuditionNUS.
 
 Format: `sort`
 
-### Clearing all entries : `clear`
-
-Clears all entries from AuditionNUS.
-
-Format: `clear`
-
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -214,30 +224,20 @@ _Details coming soon ..._
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous AuditionNUS home folder.
 
----
-
-## Known issues
-
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only
-   the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the
-   application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut
-   `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to
-   manually restore the minimized Help Window.
 
 ---
 
 ## Command summary
 
- Action     | Format, Examples
-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **Add**    | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
- **Clear**  | `clear`                                                                                                                 
- **Copy**   | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                                                                                   
- **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
- **Edit**   | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`                                           
- **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
- **List**   | `list`                                                                                                                                                                
- **Help**   | `help`                                                                                                                                                                
- **Delete** | `delete INDEX`<br> e.g., `delete 3`
- **Sort**   | `sort`
+ Action       | Format, Examples
+--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ **View All** | `viewall`
+ **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
+ **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+ **Help**     | `help`
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Sort**     | `sort`
+ **Exit**     | `exit`
