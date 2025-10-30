@@ -4,11 +4,27 @@ title: User Guide
 ---
 
 AuditionNUS is a **desktop app for managing auditionee information, optimized for use via a Command Line Interface**
-(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your
-auditionee management tasks done faster than traditional GUI apps.
+(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AuditionNUS can get
+your auditionee management tasks done faster than traditional GUI apps.
 
-- Table of Contents
-  {:toc}
+# Table of Contents
+
+- [Quick Start](#quick-start)
+- [Features](#features)
+    - [Viewing Help: `help`](#viewing-help--help)
+    - [Adding an Auditionee: `add`](#adding-a-person-add)
+    - [Listing All Auditionees: `viewall`](#listing-all-persons--viewall)
+    - [Editing an Auditionee: `edit`](#editing-a-person--edit)
+    - [Finding Auditionees: `find`](#locating-persons-by-tag-or-name-find)
+    - [Copying Auditionee Details: `copy`](#copying-auditionee-details-copy)
+    - [Deleting an Auditionee: `delete`](#deleting-a-person--delete)
+    - [Sorting Auditionees by Rating: `sort`](#sorting-all-persons-by-rating--sort)
+    - [Exiting the Program: `exit`](#exiting-the-program--exit)
+    - [Saving the Data](#saving-the-data)
+    - [Editing the Data File](#editing-the-data-file)
+    - [Archiving Data Files `[coming in v2.0]`](#archiving-data-files-coming-in-v20)
+- [FAQ](#faq)
+- [Command Summary](#command-summary)
 
 ---
 
@@ -33,7 +49,7 @@ auditionee management tasks done faster than traditional GUI apps.
 
     - `viewall` : Lists all auditionees.
 
-    - `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
+    - `add n/<name> h/<telegramhandle> i/<instrument> c/<comments> r/<final score out of 10> ` : Adds an auditionee
       to the AuditionBook.
 
     - `delete 3` : Deletes the 3rd contact shown in the current list.
@@ -50,7 +66,7 @@ auditionee management tasks done faster than traditional GUI apps.
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+**Notes about the command format:**<br>
 
 - Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
