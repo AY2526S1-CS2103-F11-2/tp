@@ -35,8 +35,8 @@ public class HelpWindow extends UiPart<Stage> {
 
             + "• edit — Edits an existing auditionee’s details.\n"
             + "    Format: edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]…\n"
-            + "    Notes: At least one optional field must be provided. " +
-            "Tags entered will replace existing tags.\n"
+            + "    Notes: At least one optional field must be provided. "
+            + "Tags entered will replace existing tags.\n"
             + "    Example: edit 2 n/Betsy Crower r/8 t/Shortlisted\n\n"
 
             + "• copy — Copies auditionee details to clipboard in a formatted table.\n"
@@ -89,21 +89,21 @@ public class HelpWindow extends UiPart<Stage> {
      * Shows the help window.
      *
      * @throws IllegalStateException <ul>
-     *                                                             <li>
-     *                                                             if this method is called on a thread other than
-     *                                                             the JavaFX Application Thread.
-     *                                                             </li>
-     *                                                             <li>
-     *                                                             if this method is called during animation or
-     *                                                             layout processing.
-     *                                                             </li>
-     *                                                             <li>
-     *                                                             if this method is called on the primary stage.
-     *                                                             </li>
-     *                                                             <li>
-     *                                                             if {@code dialogStage} is already showing.
-     *                                                             </li>
-     *                                                             </ul>
+     *                               <li>
+     *                               if this method is called on a thread other than
+     *                               the JavaFX Application Thread.
+     *                               </li>
+     *                               <li>
+     *                               if this method is called during animation or
+     *                               layout processing.
+     *                               </li>
+     *                               <li>
+     *                               if this method is called on the primary stage.
+     *                               </li>
+     *                               <li>
+     *                               if {@code dialogStage} is already showing.
+     *                               </li>
+     *                               </ul>
      */
     public void show() {
         logger.fine("Showing help page about the application.");
