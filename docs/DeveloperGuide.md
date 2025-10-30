@@ -311,6 +311,7 @@ The following activity diagram summarizes what happens when a user executes a ne
 **Target user profile**:
 
 * has a need to manage a significant number of auditionees for NUS Music Club
+* has a need to review auditionees quickly
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
