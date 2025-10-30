@@ -66,7 +66,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'addressbook.jar'
+    archiveFileName = 'AuditionNUS.jar'
 }
 
 defaultTasks 'clean', 'test'
@@ -77,4 +77,8 @@ sourceSets {
             exclude '**/*'
         }
     }
+}
+
+run {
+    enableAssertions = true
 }
