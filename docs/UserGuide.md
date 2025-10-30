@@ -129,9 +129,9 @@ Format: `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING
 
 e.g., `edit 1 h/@JohnDoe i/Piano`
 
-### Locating persons by tag or name: `find`
+### Locating auditionees by tag or name: `find`
 
-Finds persons whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
+Finds auditionees whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
@@ -164,13 +164,18 @@ Format: `copy [b/COUNT] [i/INSTRUMENT]`
 
 Examples:
 
+* `find Guitar` returns all auditionees who play the guitar.
+* `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`.
+* `find 9` returns auditionees rated `9`.
+* `find John` still returns `john` and `John Doe`.
+  ![result for 'find 10'](images/find10Result.png) 
 - `copy` copies all auditionees to clipboard
 - `copy b/5` copies the top 5 auditionees by rating
 - `copy i/Piano` copies all piano players
 - `copy b/5 i/Piano` copies the top 5 piano players by rating
 - `copy b/3 i/Guitar` copies the top 3 guitarists by rating
 
-### Deleting a person : `delete`
+### Deleting a auditionee : `delete`
 
 Deletes the specified person from AuditionNUS.
 
