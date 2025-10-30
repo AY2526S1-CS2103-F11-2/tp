@@ -28,6 +28,11 @@ public class DeleteCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a DeleteCommand to delete the person at the specified {@code targetIndex}.
+     *
+     * @param targetIndex Index of the person to delete
+     */
     public DeleteCommand(Index targetIndex) {
         assert targetIndex != null : "Target index should not be null";
         assert targetIndex.getZeroBased() >= 0 : "Target index should be non-negative";
