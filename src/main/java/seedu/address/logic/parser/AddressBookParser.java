@@ -42,6 +42,13 @@ public class AddressBookParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
+        if (userInput.matches("(?i)^(delete|view|edit)\\d+$")) {
+            // Extract command and number parts
+            String corrected = userInput.replaceAll("(?i)(delete|view|edit)(\\d+)", "$1 $2");
+            throw new ParseException("Did you mean '"
+                    + corrected + "'? Please include a space after the command word.");
+        }
+
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
