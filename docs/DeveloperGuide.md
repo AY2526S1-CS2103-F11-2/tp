@@ -291,12 +291,6 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -344,9 +338,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
 | `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
 | `*`      | club leader   | see a confirmation/prompt for destructive ops| avoid accidental data loss                        |
-| `**`      | club leader   | see error messages for invalid indices      | understand how to correct my command              |
-| `**`      | club leader   | export auditionees                          | share lists with the team                         |
-*{More to be added}*
+| `* *`    | club leader   | see error messages for invalid indices      | understand how to correct my command              |
+| `* *`    | club leader   | export auditionees                          | share lists with the team                         |
+| `* *`    | club leader   | copy auditionee details to clipboard        | publish the results of the audition                |
 
 ### Use cases
 
