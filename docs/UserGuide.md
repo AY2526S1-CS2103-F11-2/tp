@@ -96,7 +96,7 @@ e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t
 
 Shows a list of all persons recorded in AuditionNUS.
 
-Format: `list`
+Format: `viewall`
 
 ### Editing a person : `edit`
 
@@ -175,12 +175,6 @@ Sorts all persons by rating in AuditionNUS.
 
 Format: `sort`
 
-### Clearing all entries : `clear`
-
-Clears all entries from AuditionNUS.
-
-Format: `clear`
-
 ### Exiting the program : `exit`
 
 Exits the program.
@@ -214,30 +208,20 @@ _Details coming soon ..._
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous AuditionNUS home folder.
 
----
-
-## Known issues
-
-1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only
-   the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the
-   application before running the application again.
-2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut
-   `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to
-   manually restore the minimized Help Window.
 
 ---
 
 ## Command summary
 
- Action     | Format, Examples
-------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **Add**    | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
- **Clear**  | `clear`                                                                                                                 
- **Copy**   | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                                                                                   
- **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
- **Edit**   | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`                                           
- **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
- **List**   | `list`                                                                                                                                                                
- **Help**   | `help`                                                                                                                                                                
- **Delete** | `delete INDEX`<br> e.g., `delete 3`
- **Sort**   | `sort`
+ Action       | Format, Examples
+--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ **View All** | `viewall`
+ **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
+ **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                                                                                   
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
+ **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`                                           
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
+ **Help**     | `help`                                                                                                                                                                
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Sort**     | `sort`
+ **Exit**     | `exit`
