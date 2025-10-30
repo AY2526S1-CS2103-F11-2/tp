@@ -231,13 +231,13 @@ the data of your previous AuditionNUS home folder.
 
  Action       | Format, Examples
 --------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
- **View All** | `viewall`
  **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
  **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`
  **Delete**   | `delete INDEX`<br> e.g., `delete 3`
  **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`
+ **Exit**     | `exit`
  **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
  **Help**     | `help`
- **Delete**   | `delete INDEX`<br> e.g., `delete 3`
  **Sort**     | `sort`
- **Exit**     | `exit`
+ **View**     | `view INDEX` <br> e.g., `view 3`
+ **View All** | `viewall`
