@@ -122,40 +122,41 @@ Examples:
   and `johndoe@example.com` respectively.
 * `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by tag or name: `find`
+### Locating auditionees by tag or name: `find`
 
-Finds persons whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
+Finds auditionees whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
-* The search is case-insensitive. e.g `guitar` will match `Guitar`
-* The order of the keywords does not matter. e.g. `@alice Guitar` will match `Guitar @alice`
-* Only full words will be matched e.g. `Guit` will not match `Guitar`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  `Guitar @alice` will return every auditionee who either plays the guitar or has the Telegram handle `@alice`
+* The search is case-insensitive. e.g `guitar` will match `Guitar`.
+* The order of the keywords does not matter. e.g. `@alice Guitar` will match `Guitar @alice`.
+* Only full words will be matched e.g. `Guit` will not match `Guitar`.
+* At least one keyword must be provided. Auditionees matching any of the keywords (OR search) will be returned.
+  `find Guitar @alice` returns every auditionee who either plays the guitar or has the Telegram handle `@alice`.
 
 
 Examples:
 
-* `find Guitar` returns all auditionees whose instrument tag is `Guitar`
-* `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`
-* `find 9` returns auditionees rated `9`
-* `find John` still returns `john` and `John Doe`
+* `find Guitar` returns all auditionees who play the guitar.
+* `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`.
+* `find 9` returns auditionees rated `9`.
+* `find John` still returns `john` and `John Doe`.
   ![result for 'find 10'](images/find10Result.png) 
 
-### Deleting a person : `delete`
+### Deleting a auditionee : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified auditionee from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the auditionee at the specified `INDEX` from the currently displayed list.
+* The index refers to the index number shown in the displayed person list and **must be a positive integer** 1, 2, 3, …​
+* If you delete from a filtered list, the person is removed and the full list is shown again.
+* Attempting to delete using an index that is out of range will result in an error message.
 
 Examples:
 
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
+* `viewall` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
 ### Clearing all entries : `clear`

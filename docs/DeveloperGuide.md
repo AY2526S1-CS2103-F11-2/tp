@@ -195,6 +195,49 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Delete feature
+
+The delete feature removes an auditionee identified by their index in the filtered list and restores the full list afterwards.
+The command carries out strict validations to protect against inconsistent state:
+
+1. `DeleteCommandParser` ensures the user provides a single positive index and surfaces parsing errors immediately.
+2. `DeleteCommand` retrieves the filtered list, checks that the chosen index is within bounds, and asserts that the
+   selected auditionee exists in the model before and after the deletion.
+3. The filtered list is reset to show all auditionees before `model.deletePerson(...)` executes so the UI reflects the
+   latest dataset.
+4. `LogicManager` persists the updated address book to storage when the command completes successfully.
+
+The full sequence is captured in `docs/diagrams/DeleteFeature.puml`.
+
+### Edit feature
+
+The edit feature lets users update one or more fields of an auditionee, with duplicate protection and comprehensive
+validation of user input:
+
+1. `EditCommandParser` tokenises the arguments, rejects repeated prefixes, and creates an `EditPersonDescriptor` only if
+   at least one field is supplied.
+2. During execution, `EditCommand` fetches the current filtered list, validates the index, and constructs the edited
+   auditionee by merging existing and updated fields.
+3. Any attempt to edit an auditionee into a duplicate (same name and instrument) triggers a `CommandException` before the
+   model is mutated.
+4. Once the `Model` is updated, the filtered list is reset and the success message is generated using the formatted
+   auditionee details. The command result is then persisted by `LogicManager`.
+
+See `docs/diagrams/EditFeature.puml` for the full sequence diagram.
+
+### Find feature
+
+The find feature filters auditionees by checking each keyword against multiple fields—name, Telegram handle, instrument,
+rating, and tags. It emphasises safe execution through assertions that guarantee a consistent filtered list:
+
+1. `FindCommandParser` splits the arguments on whitespace to build a `NameContainsKeywordsPredicate` covering all
+   keywords.
+2. `FindCommand` asserts that a predicate is always present, applies it to the model, and verifies that every auditionee
+   in the filtered list satisfies the predicate.
+3. The command returns a summary message showing how many auditionees matched the query.
+
+Refer to `docs/diagrams/FindFeature.puml` for the detailed sequence diagram.
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
