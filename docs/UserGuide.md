@@ -31,16 +31,16 @@ auditionee management tasks done faster than traditional GUI apps.
    open the help window.<br>
    Some example commands you can try:
 
-   - `viewall` : Lists all auditionees.
+    - `viewall` : Lists all auditionees.
 
-   - `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
-     to the AuditionBook.
+    - `add n/<name>; h/<telegramhandle>; i/<instrument>; c/<comments>; r/<final score out of 10> ` : Adds an auditionee
+      to the AuditionBook.
 
-   - `delete 3` : Deletes the 3rd contact shown in the current list.
+    - `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   - `clear` : Deletes all contacts.
+    - `clear` : Deletes all contacts.
 
-   - `exit` : Exits the app.
+    - `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -89,8 +89,7 @@ Format: `add n/NAME t/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]…​`
 
 **Tip:** A person can have any number of tags (including 0)
 
-
-e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
+e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
 
 ### Listing all persons : `viewall`
 
@@ -135,7 +134,8 @@ Examples:
 
 ### Copying auditionee details: `copy`
 
-Copies auditionee details to the system clipboard in a formatted table. You can optionally filter by instrument and limit to top performers by rating.
+Copies auditionee details to the system clipboard in a formatted table. You can optionally filter by instrument and
+limit to top performers by rating.
 
 Format: `copy [b/COUNT] [i/INSTRUMENT]`
 
@@ -213,15 +213,15 @@ the data of your previous AuditionNUS home folder.
 
 ## Command summary
 
- Action       | Format, Examples
---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
- **View All** | `viewall`
+ Action       | Format, Examples                                                                                                                                                
+--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ **View All** | `viewall`                                                                                                                                                       
  **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band` 
- **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                                                                                   
- **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                   
- **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`                                           
- **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                            
- **Help**     | `help`                                                                                                                                                                
- **Delete**   | `delete INDEX`<br> e.g., `delete 3`
- **Sort**     | `sort`
- **Exit**     | `exit`
+ **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`                                                                       
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                             
+ **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`                                      
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                      
+ **Help**     | `help`                                                                                                                                                          
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`                                                                                                                             
+ **Sort**     | `sort`                                                                                                                                                          
+ **Exit**     | `exit`                                                                                                                                                          
