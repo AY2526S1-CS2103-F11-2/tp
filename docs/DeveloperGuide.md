@@ -432,9 +432,17 @@ Goal: Add the details for new auditionees.
 * 2a. The list is empty.  
   → Use case ends.
 
-* 3a. INDEX is not an integer or out of range.  
-  3a1. System shows: `Please enter a valid index.`  
+* 3a. INDEX is not a positive integer starting from 1 (for example `delete 0` or `delete a`).
+  3a1. System shows: `Index must be a positive integer starting from 1. 
   3a2. Use case resumes at step 3.
+
+* 3b. More than one index is provided (for example `delete 1 2`).
+  3b1. System shows: `Only one index can be provided to the delete command.`
+  3b2. Use case resumes at step 3.
+
+* 3c. INDEX is out of the displayed range.
+  3c1. System shows: `The auditionee index provided is out of range of the displayed list; enter a value between 1 and the number of shown auditionees.`
+  3c2. Use case resumes at step 3.
 
 * 5a. The target auditionee is no longer present (e.g., concurrently removed).  
   5a1. System shows: `Auditionee not found.`  
@@ -445,8 +453,9 @@ Goal: Add the details for new auditionees.
 * Command: `deleteAuditionee(INDEX)`
 * Acceptable values: `INDEX` is an integer corresponding to the currently displayed list.
 * Error messages:
-    * `Auditionee index not found!` when the index does not exist in the system
-    * `Please enter a valid index.` when input is not a valid integer or out of range
+    * `Index must be a positive integer starting from 1.` when the input is empty, 0, negative, or contains non-numeric text
+    * `Only one index can be provided to the delete command.` when multiple indices are supplied
+    * `The auditionee index provided is out of range of the displayed list; enter a value between 1 and the number of shown auditionees.` when the index does not exist in the system
 * Rationale: Using the displayed index avoids confusion across potential duplicate names.
 
 ### Non-Functional Requirements
