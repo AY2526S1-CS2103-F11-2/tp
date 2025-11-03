@@ -513,6 +513,21 @@ Goal: Add the details for new auditionees.
 * **Index**: A 1-based integer referencing an item in the currently displayed list.
 * **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
 * **Validation**: Checking that user input (e.g., index) is syntactically and semantically acceptable.
+* **Instrument**: Musical instrument auditioned for
+* **Rating**: Numerical score, expected range 0–10
+* **Telegram handle**: Communication identifier, prefixed with @
+* **Copy**: Command that copies auditionee data, optionally filtered by instrument/rating
+* **Index**: 1-based integer referencing the currently displayed list
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Future Improvements
+
+- Improve readability of error messages by implementing vertical scroll instead of letting text overflow horizontally
+- Allow for more customization when it comes to copying
+- Allow for find feature to search by partial names instead of full name
+- Better handling of extra spaces in name input
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
