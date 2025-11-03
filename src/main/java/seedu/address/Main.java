@@ -2,6 +2,8 @@ package seedu.address;
 
 import java.util.logging.Logger;
 
+import javafx.application.Application;
+
 import seedu.address.commons.core.LogsCenter;
 
 /**
@@ -24,6 +26,9 @@ public class Main {
     private static Logger logger = LogsCenter.getLogger(Main.class);
 
     public static void main(String[] args) {
+
+        logger.warning("The warning about Unsupported JavaFX configuration below (if any) can be ignored.");
+        Application.launch(MainApp.class, args);
 
         // As per https://github.com/openjdk/jfx/blob/master/doc-files/release-notes-16.md
         // JavaFX 16 (or later) runtime logs a warning at startup if JavaFX classes are loaded from
