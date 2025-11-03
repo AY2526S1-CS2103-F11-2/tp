@@ -22,13 +22,8 @@ public class FindCommand extends Command {
             + "Example: " + COMMAND_WORD + " guitar ";
 
     private final NameContainsKeywordsPredicate predicate;
-    /**
-     * Creates a FindCommand to find persons matching the given predicate.
-     *
-     * @param predicate the predicate used to filter persons
-     */
+
     public FindCommand(NameContainsKeywordsPredicate predicate) {
-        assert predicate != null : "Predicate should not be null";
         this.predicate = predicate;
     }
 
@@ -36,9 +31,6 @@ public class FindCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredPersonList(predicate);
-        assert model.getFilteredPersonList() != null : "Filtered person list should not be null after update";
-        assert model.getFilteredPersonList().stream().allMatch(person -> predicate.test(person))
-                : "Filtered list should only contain persons matching the predicate";
         return new CommandResult(
                 String.format(Messages.MESSAGE_PERSONS_LISTED_OVERVIEW, model.getFilteredPersonList().size()));
     }
