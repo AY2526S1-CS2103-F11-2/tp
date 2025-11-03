@@ -12,13 +12,13 @@ your auditionee management tasks done faster than traditional GUI apps.
 - [Quick Start](#quick-start)
 - [Features](#features)
     - [Viewing Help: `help`](#viewing-help--help)
-    - [Adding an Auditionee: `add`](#adding-a-person-add)
-    - [Listing All Auditionees: `viewall`](#listing-all-persons--viewall)
-    - [Editing an Auditionee: `edit`](#editing-a-person--edit)
-    - [Finding Auditionees: `find`](#locating-persons-by-tag-or-name-find)
+    - [Adding an Auditionee: `add`](#adding-an-auditionee-add)
+    - [Listing All Auditionees: `viewall`](#listing-all-auditionees--viewall)
+    - [Editing an Auditionee: `edit`](#editing-an-auditionee--edit)
+    - [Finding Auditionees: `find`](#locating-auditionees-by-tag-or-name-find)
     - [Copying Auditionee Details: `copy`](#copying-auditionee-details-copy)
-    - [Deleting an Auditionee: `delete`](#deleting-a-person--delete)
-    - [Sorting Auditionees by Rating: `sort`](#sorting-all-persons-by-rating--sort)
+    - [Deleting an Auditionee: `delete`](#deleting-an-auditionee--delete)
+    - [Sorting Auditionees by Rating: `sort`](#sorting-all-auditionees-by-rating--sort)
     - [Exiting the Program: `exit`](#exiting-the-program--exit)
     - [Saving the Data](#saving-the-data)
     - [Editing the Data File](#editing-the-data-file)
@@ -49,12 +49,10 @@ your auditionee management tasks done faster than traditional GUI apps.
 
     - `viewall` : Lists all auditionees.
 
-    - `add n/<name> h/<telegramhandle> i/<instrument> c/<comments> r/<final score out of 10> ` : Adds an auditionee
+    - `add n/NAME h/TELEGRAMHANDLE i/INSTRUMENT c/COMMENTS r/RATING ` : Adds an auditionee
       to the AuditionBook.
 
     - `delete 3` : Deletes the 3rd contact shown in the current list.
-
-    - `clear` : Deletes all contacts.
 
     - `exit` : Exits the app.
 
@@ -97,34 +95,35 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-### Adding a person: `add`
+### Adding an auditionee: `add`
 
 Adds a auditionee to the AuditionNUS.
 
 Format: `add n/NAME t/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]…​`
 
-**Tip:** A person can have any number of tags (including 0)
+**Tip:** An auditionee can have any number of tags (including 0)
 
 e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
 
-### Listing all persons : `viewall`
+### Listing all auditionees : `viewall`
 
-Shows a list of all persons recorded in AuditionNUS.
+Shows a list of all auditionees recorded in AuditionNUS.
 
 Format: `viewall`
 
-### Editing a person : `edit`
+### Editing an auditionee : `edit`
 
-Edits the record of an existing person in AuditionNUS.
+Edits the record of an existing auditionee in AuditionNUS.
 
 Format: `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...​`
 
-- Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list.
+- Edits the auditionee at the specified `INDEX`. The index refers to the index number shown in the displayed auditionee 
+  list.
   The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
-- When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-- You can remove all the person’s tags by typing `t/` without
+- When editing tags, the existing tags of the auditionee will be removed i.e adding of tags is not cumulative.
+- You can remove all the auditionee’s tags by typing `t/` without
   specifying any tags after it.
 
 e.g., `edit 1 h/@JohnDoe i/Piano`
@@ -137,7 +136,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 - The order of the keywords does not matter. e.g. `@alice Guitar` will match `Guitar @alice`
 - Only full words will be matched e.g. `Guit` will not match `Guitar`
-- Persons matching at least one keyword will be returned (i.e. `OR` search).
+- Auditionees matching at least one keyword will be returned (i.e. `OR` search).
   `Guitar @alice` will return every auditionee who either plays the guitar or has the Telegram handle `@alice`
 
 Examples:
@@ -175,24 +174,24 @@ Examples:
 - `copy b/5 i/Piano` copies the top 5 piano players by rating
 - `copy b/3 i/Guitar` copies the top 3 guitarists by rating
 
-### Deleting a auditionee : `delete`
+### Deleting an auditionee : `delete`
 
-Deletes the specified person from AuditionNUS.
+Deletes the specified auditionee from AuditionNUS.
 
 Format: `delete INDEX`
 
-- Deletes the person at the specified `INDEX`.
-- The index refers to the index number shown in the displayed person list.
+- Deletes the auditionee at the specified `INDEX`.
+- The index refers to the index number shown in the displayed auditionee list.
 - The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
 
-* `list` followed by `delete 2` deletes the 2nd person in AuditionNUS.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd auditionee in AuditionNUS.
+* `find Betsy` followed by `delete 1` deletes the 1st auditionee in the results of the `find` command.
 
-### Sorting all persons by rating : `sort`
+### Sorting all auditionees by rating : `sort`
 
-Sorts all persons by rating in AuditionNUS.
+Sorts all auditionees by rating in AuditionNUS.
 
 Format: `sort`
 
