@@ -103,6 +103,10 @@ Adds an auditionee to AuditionNUS.
 
 Format: `add n/NAME t/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]…​`
 
+**Note:** You cannot add duplicate auditionees. Two auditionees are considered the same if both their Telegram
+handle and instrument played are identical.
+(e.g., Two entires with the same Telegram handle and instrument will not be allowed.) 
+
 **Tip:** An auditionee can have any number of tags (including 0)
 
 e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
@@ -151,7 +155,7 @@ Examples:
 - `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`
 - `find 9` returns auditionees rated `9`
 - `find John` still returns `john` and `John Doe`
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  ![result for 'find 10'](images/find10Result.png)
 
 ### Copying auditionee details: `copy`
 
@@ -168,12 +172,6 @@ Format: `copy [b/COUNT] [i/INSTRUMENT]`
 - The output is formatted as a table with columns for name, telehandle, instrument, rating, comment, and tags
 
 Examples:
-
-* `find Guitar` returns all auditionees who play the guitar.
-* `find @AlexYeoh` returns the auditionee with the Telegram handle `@AlexYeoh`.
-* `find 9` returns auditionees rated `9`.
-* `find John` still returns `john` and `John Doe`.
-  ![result for 'find 10'](images/find10Result.png) 
 - `copy` copies all auditionees to clipboard
 - `copy b/5` copies the top 5 auditionees by rating
 - `copy i/Piano` copies all piano players
