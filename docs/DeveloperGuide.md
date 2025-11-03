@@ -525,6 +525,7 @@ Goal: Add the details for new auditionees.
 - Allow for more customization when it comes to copying
 - Allow for find feature to search by partial names instead of full name
 - Better handling of extra spaces in name input
+- Sort command to sort the ratings and contacts in increasing order instead of strictly decreasing order
 
 --------------------------------------------------------------------------------------------------------------------
 
