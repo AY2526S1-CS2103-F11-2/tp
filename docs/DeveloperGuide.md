@@ -249,7 +249,7 @@ The copy feature copies auditionee details, allowing for 2 parameters, `b/COUNT`
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("copy b/1")` API
 call as an example.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/CopySequenceDiagram.png)
+![Interactions Inside the Logic Component for the `copy b/1` Command](images/CopySequenceDiagram.png)
 
 ### \[Proposed\] Undo/redo feature
 
