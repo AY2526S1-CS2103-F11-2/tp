@@ -126,7 +126,12 @@ Format: `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING
 - You can remove all the auditionee’s tags by typing `t/` without
   specifying any tags after it.
 
-e.g., `edit 1 h/@JohnDoe i/Piano`
+e.g.
+- `edit 1 h/@JohnDoe i/Piano`
+- `edit 2 n/Jane Doe r/8` – edits name and rating
+- `edit 3 t/` – removes all tags of the 3rd auditionee
+- `edit 4 t/friends t/band` – replaces existing tags of the 4th auditionee with `friends` and `band`
+- `edit 5 c/Excellent singer r/10 t/solo` – edits comment, rating and tags of the 5th auditionee
 
 ### Locating auditionees by tag or name: `find`
 
