@@ -4,8 +4,9 @@ title: User Guide
 ---
 
 AuditionNUS is a **desktop app for managing auditionee information, optimized for use via a Command Line Interface**
-(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AuditionNUS can get
-your auditionee management tasks done faster than traditional GUI apps.
+(CLI) while still having the benefits of a Graphical User Interface (GUI). AuditionNUS is designed for NUS Music Clubs' 
+audition organisers who need a fast and reliable way to record, review, and organize auditionee information without 
+relying on bulky spreadsheets or manual tracking tools.
 
 # Table of Contents
 
