@@ -51,9 +51,9 @@ relying on bulky spreadsheets or manual tracking tools.
     - `viewall` : Lists all auditionees.
 
     - `add n/NAME h/TELEGRAMHANDLE i/INSTRUMENT c/COMMENTS r/RATING ` : Adds an auditionee
-      to the AuditionBook.
+      to the AuditionNUS.
 
-    - `delete 3` : Deletes the 3rd contact shown in the current list.
+    - `delete 3` : Deletes the 3rd auditionee shown in the current list.
 
     - `exit` : Exits the app.
 
@@ -98,7 +98,7 @@ Format: `help`
 
 ### Adding an auditionee: `add`
 
-Adds a auditionee to the AuditionNUS.
+Adds an auditionee to AuditionNUS.
 
 Format: `add n/NAME t/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]…​`
 
@@ -186,8 +186,8 @@ Deletes the specified auditionee from AuditionNUS.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the auditionee at the specified `INDEX`.
+* The index refers to the index number shown in the displayed auditionee list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * - Provide only **one** index at a time. Commands such as `delete 1 2` are not supported.
 - If the index is 0, negative, or larger than the number of auditionees shown, you will see a descriptive error message
