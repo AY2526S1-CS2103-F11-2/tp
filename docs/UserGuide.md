@@ -141,6 +141,7 @@ e.g.
 ### Locating auditionees by tag or name: `find`
 
 Finds auditionees whose names, instruments, Telegram handles, ratings, or tags contain any of the given keywords.
+This will not find any keywords under comments.
 
 Format: `find KEYWORD [MORE_KEYWORDS]`
 
