@@ -162,7 +162,7 @@ The `Model` component,
 * does not depend on any of the other three components (as the `Model` represents data entities of the domain, they
   should make sense on their own without depending on other components)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects.<br>
+<div markdown="span" class="alert alert-info">:information_source: Note: An alternative (arguably, a more OOP) model is given below. It has a Tag list in the AuditionNUS data model (implemented by the AddressBook class), which each auditionee references. This allows AuditionNUS to only require one Tag object per unique tag, instead of each auditionee needing their own Tag objects.<br>
 
 <img src="images/BetterModelClassDiagram.png" width="450" />
 
@@ -177,7 +177,7 @@ The `Model` component,
 
 The `Storage` component,
 
-* can save both address book data and user preference data in JSON format, and read them back into corresponding
+* can save both AuditionNUS data and user preference data in JSON format, and read them back into corresponding
   objects.
 * inherits from both `AddressBookStorage` and `UserPrefStorage`, which means it can be treated as either one (if only
   the functionality of only one is needed).
@@ -204,7 +204,7 @@ The command carries out strict validations to protect against inconsistent state
    selected auditionee exists in the model before and after the deletion.
 3. The filtered list is reset to show all auditionees before `model.deletePerson(...)` executes so the UI reflects the
    latest dataset.
-4. `LogicManager` persists the updated address book to storage when the command completes successfully.
+4. `LogicManager` persists the updated AuditionNUS dataset to storage when the command completes successfully.
 
 The full sequence is captured in `docs/diagrams/DeleteFeature.puml`.
 
@@ -250,13 +250,13 @@ The copy feature copies auditionee details, allowing for 2 parameters, `b/COUNT`
 
 #### Proposed Implementation
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo
+The proposed undo/redo mechanism is facilitated by VersionedAddressBook. It extends the AuditionNUS data model (the AddressBook class in code) with an undo/redo
 history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the
 following operations:
 
-* `VersionedAddressBook#commit()`— Saves the current address book state in its history.
-* `VersionedAddressBook#undo()`— Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()`— Restores a previously undone address book state from its history.
+* `VersionedAddressBook#commit()`— Saves the current AuditionNUS state in its history.
+* `VersionedAddressBook#undo()`— Restores the previous AuditionNUS state from its history.
+* `VersionedAddressBook#redo()`— Restores a previously undone AuditionNUS state from its history.
 
 These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and
 `Model#redoAddressBook()` respectively.
@@ -264,32 +264,32 @@ These operations are exposed in the `Model` interface as `Model#commitAddressBoo
 Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
 
 Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the
-initial address book state, and the `currentStatePointer` pointing to that single address book state.
+initial AuditionNUS state, and the `currentStatePointer` pointing to that single saved state.
 
 ![UndoRedoState0](images/UndoRedoState0.png)
 
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls
-`Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be
-saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+Step 2. The user executes `delete 5` command to delete the 5th auditionee in AuditionNUS. The `delete` command calls
+`Model#commitAddressBook()`, causing the modified AuditionNUS state after the `delete 5` command executes to be
+saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted AuditionNUS state.
 
 ![UndoRedoState1](images/UndoRedoState1.png)
 
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls
-`Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
+Step 3. The user executes `add n/David …​` to add a new auditionee. The `add` command also calls
+`Model#commitAddressBook()`, causing another modified AuditionNUS state to be saved into the `addressBookStateList`.
 
 ![UndoRedoState2](images/UndoRedoState2.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the AuditionNUS state will not be saved into the `addressBookStateList`.
 
 </div>
 
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the
+Step 4. The user now decides that adding the auditionee was a mistake, and decides to undo that action by executing the
 `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once
-to the left, pointing it to the previous address book state, and restores the address book to that state.
+to the left, pointing it to the previous AuditionNUS state, and restores the data to that state.
 
 ![UndoRedoState3](images/UndoRedoState3.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AuditionNUS state, then there are no previous states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
 than attempting to perform the undo.
 
 </div>
@@ -307,20 +307,20 @@ Similarly, how an undo operation goes through the `Model` component is shown bel
 ![UndoSequenceDiagram](images/UndoSequenceDiagram-Model.png)
 
 The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once
-to the right, pointing to the previously undone state, and restores the address book to that state.
+to the right, pointing to the previously undone state, and restores the AuditionNUS to that state.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest AuditionNUS state, then there are no undone states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
 
 </div>
 
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as
+Step 5. The user then decides to execute the command `list`. Commands that do not modify the AuditionNUS data, such as
 `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus,
 the `addressBookStateList` remains unchanged.
 
 ![UndoRedoState4](images/UndoRedoState4.png)
 
 Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not
-pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be
+pointing at the end of the `addressBookStateList`, all AuditionNUS states after the `currentStatePointer` will be
 purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern
 desktop applications follow.
 
@@ -334,13 +334,13 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 **Aspect: How undo & redo executes:**
 
-* **Alternative 1 (current choice):** Saves the entire address book.
+* **Alternative 1 (current choice):** Saves the entire AuditionNUS dataset.
     * Pros: Easy to implement.
     * Cons: May have performance issues in terms of memory usage.
 
 * **Alternative 2:** Individual command knows how to undo/redo by
   itself.
-    * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
+    * Pros: Will use less memory (e.g. for `delete`, just save the auditionee being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
 
@@ -375,25 +375,25 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name or tag   | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-| `* * *`  | club leader   | view all auditionees with indices           | identify the correct record to edit or delete     |
-| `* * *`  | club leader   | delete an auditionee by index               | remove incorrect or outdated entries              |
-| `* * *`  | club leader   | add a new auditionee                        | keep the audition list up to date                 |
-| `* * *`  | club leader   | find auditionees by name, instrument, handle, or rating | locate a record without scanning the full list    |
-| `* *`    | club leader   | edit an auditionee’s details                | correct mistakes without re-adding the entry      |
-| `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
-| `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
-| `*`      | club leader   | see a confirmation/prompt for destructive ops| avoid accidental data loss                        |
-| `* *`    | club leader   | see error messages for invalid indices      | understand how to correct my command              |
-| `* *`    | club leader   | export auditionees                          | share lists with the team                         |
-| `* *`    | club leader   | copy auditionee details to clipboard        | publish the results of the audition                |
+| Priority | As a …​                                      | I want to …​                                            | So that I can…​                                                            |
+| -------- |----------------------------------------------|---------------------------------------------------------|----------------------------------------------------------------------------|
+| `* * *`  | new user                                     | see usage instructions                                  | refer to instructions when I forget how to use the App                     |
+| `* * *`  | user                                         | add a new auditionee                                    |                                                                            |
+| `* * *`  | user                                         | delete an auditionee                                    | remove entries that I no longer need                                       |
+| `* * *`  | user                                         | find an auditionee by name or tag                       | locate details of auditionees without having to go through the entire list |
+| `* *`    | user                                         | hide private contact details                            | minimize chance of someone else seeing them by accident                    |
+| `*`      | user with many auditonees in the AuditionNUS | sort auditionee by name                                 | locate an auditionee easily                                                |
+| `* * *`  | club leader                                  | view all auditionees with indices                       | identify the correct record to edit or delete                              |
+| `* * *`  | club leader                                  | delete an auditionee by index                           | remove incorrect or outdated entries                                       |
+| `* * *`  | club leader                                  | add a new auditionee                                    | keep the audition list up to date                                          |
+| `* * *`  | club leader                                  | find auditionees by name, instrument, handle, or rating | locate a record without scanning the full list                             |
+| `* *`    | club leader                                  | edit an auditionee’s details                            | correct mistakes without re-adding the entry                               |
+| `* *`    | club leader                                  | filter auditionees by instrument/timeslot               | shortlist candidates efficiently                                           |
+| `*`      | club leader                                  | undo the last delete                                    | recover from accidental deletions                                          |
+| `*`      | club leader                                  | see a confirmation/prompt for destructive ops           | avoid accidental data loss                                                 |
+| `* *`    | club leader                                  | see error messages for invalid indices                  | understand how to correct my command                                       |
+| `* *`    | club leader                                  | export auditionees                                      | share lists with the team                                                  |
+| `* *`    | club leader                                  | copy auditionee details to clipboard                    | publish the results of the audition                                        |
 
 ### Use cases
 
@@ -408,7 +408,7 @@ etc.)
 **MSS**
 
 1.  User requests to <u>view all auditionees (UC01)</u>.
-2.  AddressBook shows a list of auditionees with their details.
+2.  AuditionNUS shows a list of auditionees with their details.
     Use case ends.
 
 Use case 2: UC02 – Sort all auditionees.
@@ -465,7 +465,7 @@ Goal: Add the details for new auditionees.
 3. User enters `delete INDEX`, e.g., `delete 2`.
 4. System validates the index.
 5. System deletes the corresponding auditionee.
-6. System shows: `Deleted Person: john; TeleHandle: @johnboy; Instrument: guitar; Rating: 9; Comment: very good; Tags: [friends]`
+6. System shows: `Deleted auditionee: john; TeleHandle: @johnboy; Instrument: guitar; Rating: 9; Comment: very good; Tags: [friends]`
 
 **Extensions**
 
@@ -498,7 +498,7 @@ Goal: Add the details for new auditionees.
 ### Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 auditionees without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Data mutations (add/edit/delete) are atomic; no partial writes.
 5.  Optional command history enables tracing changes.
