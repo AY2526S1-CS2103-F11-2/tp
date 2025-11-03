@@ -24,7 +24,8 @@ public class DeleteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer; only one index may be provided)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_SINGLE_INDEX_CONSTRAINT = "Only one index can be provided to the delete command.";
+    public static final String MESSAGE_SINGLE_INDEX_CONSTRAINT =
+            "Only one index can be provided to the delete command.";
 
     public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
 
