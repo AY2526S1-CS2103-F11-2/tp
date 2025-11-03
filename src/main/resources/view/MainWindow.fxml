@@ -26,10 +26,10 @@
             <VBox>
                 <MenuBar fx:id="menuBar" VBox.vgrow="NEVER">
                     <Menu mnemonicParsing="false" text="File">
-                        <MenuItem mnemonicParsing="false" text="Exit"/>
+                        <MenuItem mnemonicParsing="false" text="Exit" onAction="#handleExit"/>
                     </Menu>
                     <Menu mnemonicParsing="false" text="Help">
-                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" text="Help"/>
+                        <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" text="Help" onAction="#handleHelp"/>
                     </Menu>
                 </MenuBar>
 
