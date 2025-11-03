@@ -20,6 +20,7 @@ relying on bulky spreadsheets or manual tracking tools.
     - [Copying Auditionee Details: `copy`](#copying-auditionee-details-copy)
     - [Deleting an Auditionee: `delete`](#deleting-an-auditionee--delete)
     - [Sorting Auditionees by Rating: `sort`](#sorting-all-auditionees-by-rating--sort)
+    - [Viewing an auditionee: `view`](#viewing-an-auditionee--view)
     - [Exiting the Program: `exit`](#exiting-the-program--exit)
     - [Saving the Data](#saving-the-data)
     - [Editing the Data File](#editing-the-data-file)
