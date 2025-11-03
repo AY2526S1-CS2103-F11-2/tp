@@ -118,8 +118,7 @@ Edits the record of an existing auditionee in AuditionNUS.
 
 Format: `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...​`
 
-- Edits the auditionee at the specified `INDEX`. The index refers to the index number shown in the displayed auditionee 
-  list.
+- Edits the auditionee at the specified `INDEX`. The index refers to the index number shown in the displayed auditionee list.
   The index **must be a positive integer** 1, 2, 3, …​
 - At least one of the optional fields must be provided.
 - Existing values will be updated to the input values.
