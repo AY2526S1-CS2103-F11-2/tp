@@ -246,6 +246,11 @@ The copy feature copies auditionee details, allowing for 2 parameters, `b/COUNT`
 2. `CopyCommand` filters the list of auditionees, generates the string, and copies it to device clipboard.
 3. The command returns a summary message showing how many auditionees has been copied.
 
+The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("copy")` API
+call as an example.
+
+![Interactions Inside the Logic Component for the `delete 1` Command](images/CopySequenceDiagram.png)
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
