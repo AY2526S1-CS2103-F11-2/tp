@@ -240,7 +240,7 @@ Refer to `docs/diagrams/FindFeature.puml` for the detailed sequence diagram.
 ### Copy feature
 Copies auditionee details to the system clipboard in a formatted table. You can optionally filter by instrument and
 limit to top performers by rating.
-The copy feature copies auditionee details, allowing for 2 parameters, `b/COUNT` and `i/INSTRUMENT` for the top `COUNT` auditionees playing `INSTRUMENT`. 
+The copy feature copies auditionee details, allowing for 2 parameters, `b/COUNT` and `i/INSTRUMENT` for the top `COUNT` auditionees playing `INSTRUMENT`.
 
 1. `CopyCommandParser` splits the arguments on whitespace.
 2. `CopyCommand` filters the list of auditionees, generates the string, and copies it to device clipboard.
