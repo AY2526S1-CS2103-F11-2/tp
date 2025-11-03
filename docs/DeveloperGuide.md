@@ -508,7 +508,6 @@ Goal: Add the details for new auditionees.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Auditionee**: A person registered to audition for the NUS Music Club.
 * **Index**: A 1-based integer referencing an item in the currently displayed list.
 * **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
@@ -516,8 +515,7 @@ Goal: Add the details for new auditionees.
 * **Instrument**: Musical instrument auditioned for
 * **Rating**: Numerical score, expected range 0–10
 * **Telegram handle**: Communication identifier, prefixed with @
-* **Copy**: Command that copies auditionee data, optionally filtered by instrument/rating
-* **Index**: 1-based integer referencing the currently displayed list
+* **Copy**: Command that copies auditionee data, optionally filtered by instrument/rating, which could be pasted on other apps on the device.
 
 --------------------------------------------------------------------------------------------------------------------
 
