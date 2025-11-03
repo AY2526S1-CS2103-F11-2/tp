@@ -78,7 +78,7 @@ public class Person {
         }
 
         return otherPerson != null
-                && otherPerson.getName().equals(getName()) && otherPerson.getInstrument().equals(getInstrument());
+                && otherPerson.getTeleHandle().equals(getTeleHandle()) && otherPerson.getInstrument().equals(getInstrument());
     }
 
     /**
