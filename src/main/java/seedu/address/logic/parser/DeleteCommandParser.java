@@ -21,7 +21,7 @@ public class DeleteCommandParser implements Parser<DeleteCommand> {
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, DeleteCommand.MESSAGE_USAGE));
         }
-        if (trimmedArgs.split("\\s+").length > 1){
+        if (trimmedArgs.split("\\s+").length > 1) {
             throw new ParseException(DeleteCommand.MESSAGE_SINGLE_INDEX_CONSTRAINT);
         }
         try {
