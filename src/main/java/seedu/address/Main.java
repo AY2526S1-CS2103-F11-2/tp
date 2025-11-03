@@ -1,6 +1,7 @@
 package seedu.address;
 
 import java.util.logging.Logger;
+
 import javafx.application.Application;
 import seedu.address.commons.core.LogsCenter;
 
