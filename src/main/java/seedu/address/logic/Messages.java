@@ -14,9 +14,9 @@ public class Messages {
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
-    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The " +
-            "auditionee index provided is out of range of the displayed list; enter a value " +
-            "between 1 and the number of shown auditionees.";
+    public static final String MESSAGE_INVALID_PERSON_DISPLAYED_INDEX = "The "
+            + "auditionee index provided is out of range of the displayed list; enter a value "
+            + "between 1 and the number of shown auditionees.";
     public static final String MESSAGE_PERSONS_LISTED_OVERVIEW = "%1$d persons listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
             "Multiple values specified for the following single-valued field(s): ";
