@@ -4,8 +4,9 @@ title: User Guide
 ---
 
 AuditionNUS is a **desktop app for managing auditionee information, optimized for use via a Command Line Interface**
-(CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AuditionNUS can get
-your auditionee management tasks done faster than traditional GUI apps.
+(CLI) while still having the benefits of a Graphical User Interface (GUI). AuditionNUS is designed for NUS Music Clubs' 
+audition organisers who need a fast and reliable way to record, review, and organize auditionee information without 
+relying on bulky spreadsheets or manual tracking tools.
 
 # Table of Contents
 
@@ -34,29 +35,29 @@ your auditionee management tasks done faster than traditional GUI apps.
    **Mac users:** Ensure you have the precise JDK version
    prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F11-2/tp/releases).
+2. Download the latest `.jar` file from [here](https://github.com/AY2526S1-CS2103-F11-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AuditionNUS.
+3. Copy the file to the folder you want to use as the _home folder_ for your AuditionNUS.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar AuditionNUS.jar`
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar AuditionNUS.jar`
    command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
    open the help window.<br>
    Some example commands you can try:
 
     - `viewall` : Lists all auditionees.
 
     - `add n/NAME h/TELEGRAMHANDLE i/INSTRUMENT c/COMMENTS r/RATING ` : Adds an auditionee
-      to the AuditionBook.
+      to the AuditionNUS.
 
-    - `delete 3` : Deletes the 3rd contact shown in the current list.
+    - `delete 3` : Deletes the 3rd auditionee shown in the current list.
 
     - `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 ---
 
@@ -97,7 +98,7 @@ Format: `help`
 
 ### Adding an auditionee: `add`
 
-Adds a auditionee to the AuditionNUS.
+Adds an auditionee to AuditionNUS.
 
 Format: `add n/NAME t/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]…​`
 
@@ -126,7 +127,12 @@ Format: `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING
 - You can remove all the auditionee’s tags by typing `t/` without
   specifying any tags after it.
 
-e.g., `edit 1 h/@JohnDoe i/Piano`
+e.g.
+- `edit 1 h/@JohnDoe i/Piano`
+- `edit 2 n/Jane Doe r/8` – edits name and rating
+- `edit 3 t/` – removes all tags of the 3rd auditionee
+- `edit 4 t/friends t/band` – replaces existing tags of the 4th auditionee with `friends` and `band`
+- `edit 5 c/Excellent singer r/10 t/solo` – edits comment, rating and tags of the 5th auditionee
 
 ### Locating auditionees by tag or name: `find`
 
@@ -180,8 +186,8 @@ Deletes the specified auditionee from AuditionNUS.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the auditionee at the specified `INDEX`.
+* The index refers to the index number shown in the displayed auditionee list.
 * The index **must be a positive integer** 1, 2, 3, …​
 * - Provide only **one** index at a time. Commands such as `delete 1 2` are not supported.
 - If the index is 0, negative, or larger than the number of auditionees shown, you will see a descriptive error message
@@ -199,6 +205,21 @@ Examples:
 Sorts all auditionees by rating in AuditionNUS.
 
 Format: `sort`
+
+### Viewing an auditionee : `view`
+
+Views the specified auditionee from AuditionNUS.
+
+Format: `view INDEX`
+
+- Views the auditionee at the specified `INDEX`.
+- The index refers to the index number shown in the displayed auditionee list.
+- The index **must be a positive integer** 1, 2, 3, …​
+
+Examples:
+
+* `list` followed by `view 2` views the 2nd auditionee in AuditionNUS.
+* `find Betsy` followed by `view 1` views the 1st auditionee in the results of the `find` command.
 
 ### Exiting the program : `exit`
 
