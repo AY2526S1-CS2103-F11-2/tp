@@ -508,11 +508,25 @@ Goal: Add the details for new auditionees.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
-* **Private contact detail**: A contact detail that is not meant to be shared with others
 * **Auditionee**: A person registered to audition for the NUS Music Club.
 * **Index**: A 1-based integer referencing an item in the currently displayed list.
 * **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
 * **Validation**: Checking that user input (e.g., index) is syntactically and semantically acceptable.
+* **Instrument**: Musical instrument auditioned for
+* **Rating**: Numerical score, expected range 0–10
+* **Telegram handle**: Communication identifier, prefixed with @
+* **Copy**: Command that copies auditionee data, optionally filtered by instrument/rating, which could be pasted on other apps on the device.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Future Improvements
+
+- Improve readability of error messages by implementing vertical scroll instead of letting text overflow horizontally
+- Allow for more customization when it comes to copying
+- Allow for find feature to search by partial names instead of full name
+- Better handling of extra spaces in name input
+- Sort command to sort the ratings and contacts in increasing order instead of strictly decreasing order
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
