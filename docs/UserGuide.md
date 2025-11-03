@@ -180,9 +180,14 @@ Deletes the specified auditionee from AuditionNUS.
 
 Format: `delete INDEX`
 
-- Deletes the auditionee at the specified `INDEX`.
-- The index refers to the index number shown in the displayed auditionee list.
-- The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person at the specified `INDEX`.
+* The index refers to the index number shown in the displayed person list.
+* The index **must be a positive integer** 1, 2, 3, …​
+* - Provide only **one** index at a time. Commands such as `delete 1 2` are not supported.
+- If the index is 0, negative, or larger than the number of auditionees shown, you will see a descriptive error message
+  such as `Index must be a positive integer starting from 1.` or
+  `The auditionee index provided is out of range of the displayed list; enter a value between 1 and the number of shown auditionees.`
+  so you can correct the command.
 
 Examples:
 
