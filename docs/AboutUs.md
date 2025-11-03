@@ -17,6 +17,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/tzhsien)]
 [[portfolio](team/tzehsien.md)]
 
+* Role: Developer
+* Responsibilities: Implement edit and viewall features
+
 ### Jove Fong
 
 <img src="images/jovefyl.png" width="200px">
@@ -26,7 +29,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Implement viewAllAuditionees feature
+* Responsibilities: Implement view and sort features
 
 ### Zheng Jiongjie
 
@@ -36,7 +39,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](https://zhengjiongjie.com)]
 
 * Role: Developer
-* Responsibilities: Implementation of adding new auditionees
+* Responsibilities: Implement add and copy features
 
 ### Hinlokk
 
@@ -46,4 +49,4 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/Hinlokk.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Implement delete and find features
