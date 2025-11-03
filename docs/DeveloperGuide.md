@@ -246,6 +246,13 @@ The copy feature copies auditionee details, allowing for 2 parameters, `b/COUNT`
 2. `CopyCommand` filters the list of auditionees, generates the string, and copies it to device clipboard.
 3. The command returns a summary message showing how many auditionees has been copied.
 
+### Clear feature
+Clears details of all auditionees recorded in the book by resetting the address book data.
+
+1. `ClearCommand` invokes `model.setAddressBook(new AddressBook())` and follows up by persisting the changes 
+through `LogicManager`.
+2. The command returns a summary message showing the success of the operation, "Address book has been cleared!"
+
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
