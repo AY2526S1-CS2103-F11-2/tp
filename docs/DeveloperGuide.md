@@ -149,8 +149,7 @@ How the parsing works:
 **API** : [
 `Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
-<img src="images/ModelClassDiagram.png" width="450" />
-
+![ModelClassDiagram.png](images/ModelClassDiagram.png)
 
 The `Model` component,
 
@@ -194,6 +193,49 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### Delete feature
+
+The delete feature removes an auditionee identified by their index in the filtered list and restores the full list afterwards.
+The command carries out strict validations to protect against inconsistent state:
+
+1. `DeleteCommandParser` ensures the user provides a single positive index and surfaces parsing errors immediately.
+2. `DeleteCommand` retrieves the filtered list, checks that the chosen index is within bounds, and asserts that the
+   selected auditionee exists in the model before and after the deletion.
+3. The filtered list is reset to show all auditionees before `model.deletePerson(...)` executes so the UI reflects the
+   latest dataset.
+4. `LogicManager` persists the updated address book to storage when the command completes successfully.
+
+The full sequence is captured in `docs/diagrams/DeleteFeature.puml`.
+
+### Edit feature
+
+The edit feature lets users update one or more fields of an auditionee, with duplicate protection and comprehensive
+validation of user input:
+
+1. `EditCommandParser` tokenises the arguments, rejects repeated prefixes, and creates an `EditPersonDescriptor` only if
+   at least one field is supplied.
+2. During execution, `EditCommand` fetches the current filtered list, validates the index, and constructs the edited
+   auditionee by merging existing and updated fields.
+3. Any attempt to edit an auditionee into a duplicate (same name and instrument) triggers a `CommandException` before the
+   model is mutated.
+4. Once the `Model` is updated, the filtered list is reset and the success message is generated using the formatted
+   auditionee details. The command result is then persisted by `LogicManager`.
+
+See `docs/diagrams/EditFeature.puml` for the full sequence diagram.
+
+### Find feature
+
+The find feature filters auditionees by checking each keyword against multiple fields—name, Telegram handle, instrument,
+rating, and tags. It emphasises safe execution through assertions that guarantee a consistent filtered list:
+
+1. `FindCommandParser` splits the arguments on whitespace to build a `NameContainsKeywordsPredicate` covering all
+   keywords.
+2. `FindCommand` asserts that a predicate is always present, applies it to the model, and verifies that every auditionee
+   in the filtered list satisfies the predicate.
+3. The command returns a summary message showing how many auditionees matched the query.
+
+Refer to `docs/diagrams/FindFeature.puml` for the detailed sequence diagram.
 
 ### \[Proposed\] Undo/redo feature
 
@@ -292,12 +334,6 @@ The following activity diagram summarizes what happens when a user executes a ne
     * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
     * Cons: We must ensure that the implementation of each individual command are correct.
 
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -318,6 +354,7 @@ _{Explain here how the data archiving feature will be implemented}_
 **Target user profile**:
 
 * has a need to manage a significant number of auditionees for NUS Music Club
+* has a need to review auditionees quickly
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -334,30 +371,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
 | `* * *`  | user                                       | add a new person               |                                                                        |
 | `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
+| `* * *`  | user                                       | find a person by name or tag   | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
 | `* * *`  | club leader   | view all auditionees with indices           | identify the correct record to edit or delete     |
 | `* * *`  | club leader   | delete an auditionee by index               | remove incorrect or outdated entries              |
 | `* * *`  | club leader   | add a new auditionee                        | keep the audition list up to date                 |
-| `* * *`  | club leader   | find auditionees by name/instrument         | locate a record without scanning the full list    |
+| `* * *`  | club leader   | find auditionees by name, instrument, handle, or rating | locate a record without scanning the full list    |
 | `* *`    | club leader   | edit an auditionee’s details                | correct mistakes without re-adding the entry      |
 | `* *`    | club leader   | filter auditionees by instrument/timeslot   | shortlist candidates efficiently                  |
 | `*`      | club leader   | undo the last delete                        | recover from accidental deletions                 |
 | `*`      | club leader   | see a confirmation/prompt for destructive ops| avoid accidental data loss                        |
-| `*`      | club leader   | see error messages for invalid indices      | understand how to correct my command              |
-| `*`      | club leader   | export auditionees                          | share lists with the team                         |
-*{More to be added}*
+| `* *`    | club leader   | see error messages for invalid indices      | understand how to correct my command              |
+| `* *`    | club leader   | export auditionees                          | share lists with the team                         |
+| `* *`    | club leader   | copy auditionee details to clipboard        | publish the results of the audition                |
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified
+(For all use cases below, the **System** is the `AuditionNUS` and the **Actor** is the `user`, unless specified
 otherwise)
 
-Use case 1: UC01 – View all auditionees.  
-Actors: User (audition organizer)  
-Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle), 
-etc.)  
+Use case 1: UC01 – View all auditionees.
+Actors: User (audition organizer)
+Goal: View all auditionees with their details (name, instrument, rating, comments, contact details (Telegram Handle),
+etc.)
 
 **MSS**
 
@@ -365,37 +402,33 @@ etc.)
 2.  AddressBook shows a list of auditionees with their details.
     Use case ends.
 
-Use case 2: UC02 – Sort all auditionees.  
-Actors: User (audition organizer)  
-Goal: Sort and display all auditionees with their details according to instrument or rating.
+Use case 2: UC02 – Sort all auditionees.
+Actors: User (audition organizer)
+Goal: Sort and display all auditionees with their details according to rating.
 
-**MSS** 
+**MSS**
 
 1.  Leader requests to sort the auditionees.
-2.  AuditionNUS accepts the sorting criteria (e.g., by name, score, instrument, or audition date). 
-3.  AuditionNUS retrieves the list of auditionees. 
-4.  AuditionNUS sorts the list based on the selected criteria. 
-5.  AuditionNUS displays the sorted list of auditionees.
+2.  AuditionNUS retrieves the list of auditionees.
+3.  AuditionNUS sorts the list.
+4.  AuditionNUS displays the sorted list of auditionees.
     Use case ends.
 
 **Extensions**
-
-- 2a. Invalid sorting criteria entered
-  - 2a1 AuditionNUS shows “Invalid sorting option. Please select a valid criterion.” Use case ends.
 
 - 3a. No auditionees found in the system.
   - 3a1. AuditionNUS shows “No auditionees available to sort.” Use case ends.
 
 
-Use case 3: UC03 – Add new auditionee.  
-Actors: User (audition organizer)  
+Use case 3: UC03 – Add new auditionee.
+Actors: User (audition organizer)
 Goal: Add the details for new auditionees.
 
-**MSS** 
+**MSS**
 
 1.  User requests to add new auditionee.
-2.  User enters auditionee details. 
-3.  System saves the details of new auditionee. 
+2.  User enters auditionee details.
+3.  System saves the details of new auditionee.
 4.  System displays success message, as well as the details of added auditonee.
     Use case ends.
 
@@ -410,8 +443,6 @@ Goal: Add the details for new auditionees.
 *a. At any time, User chooses to cancel the addition of new auditionee.
    - Use case ends.
 
-*{More to be added}*
-
 **Use case: Delete an auditionee**
 
 - **Actor**: Club leader
@@ -422,14 +453,14 @@ Goal: Add the details for new auditionees.
 
 1. User requests to list auditionees (e.g., `viewAll`).
 2. System shows the list with indices.
-3. User enters `deleteAuditionee(INDEX)`, e.g., `deleteAuditionee(2)`.
+3. User enters `delete INDEX`, e.g., `delete 2`.
 4. System validates the index.
 5. System deletes the corresponding auditionee.
-6. System shows: `Auditionee [Name] has been successfully deleted.`
+6. System shows: `Deleted Person: john; TeleHandle: @johnboy; Instrument: guitar; Rating: 9; Comment: very good; Tags: [friends]`
 
 **Extensions**
 
-* 2a. The list is empty.  
+* 2a. The list is empty.
   → Use case ends.
 
 * 3a. INDEX is not a positive integer starting from 1 (for example `delete 0` or `delete a`).
@@ -444,13 +475,10 @@ Goal: Add the details for new auditionees.
   3c1. System shows: `The auditionee index provided is out of range of the displayed list; enter a value between 1 and the number of shown auditionees.`
   3c2. Use case resumes at step 3.
 
-* 5a. The target auditionee is no longer present (e.g., concurrently removed).  
-  5a1. System shows: `Auditionee not found.`  
-  5a2. Use case ends.
 
 **Command format and validation (for reference)**
 
-* Command: `deleteAuditionee(INDEX)`
+* Command: `delete INDEX`
 * Acceptable values: `INDEX` is an integer corresponding to the currently displayed list.
 * Error messages:
     * `Index must be a positive integer starting from 1.` when the input is empty, 0, negative, or contains non-numeric text
@@ -464,17 +492,15 @@ Goal: Add the details for new auditionees.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Data mutations (add/edit/delete) are atomic; no partial writes.
-5.  Optional command history enables tracing changes 
+5.  Optional command history enables tracing changes.
 6.  App must not crash when main operations are conducted.
 7.  App should start up in less than **2 seconds**.
-
-*{More to be added}*
 
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-  **Auditionee**: A person registered to audition for the NUS Music Club.
+* **Auditionee**: A person registered to audition for the NUS Music Club.
 * **Index**: A 1-based integer referencing an item in the currently displayed list.
 * **Record**: The stored data of an auditionee (e.g., name, instrument, timeslot).
 * **Validation**: Checking that user input (e.g., index) is syntactically and semantically acceptable.
@@ -484,51 +510,18 @@ Goal: Add the details for new auditionees.
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+**Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
 
-</div>
-
-### Launch and shutdown
-
-1. Initial launch
-
-    1. Download the jar file and copy into an empty folder
-
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be
-       optimum.
-
-1. Saving window preferences
-
-    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
-
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
-
-1. _{ more test cases …​ }_
-
-### Deleting a person
-
-1. Deleting a person while all persons are being shown
-
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
-
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
-       Timestamp in the status bar is updated.
-
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
-
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
-
-### Saving data
-
-1. Dealing with missing/corrupted data files
-
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_
+ Action       | Format, Examples
+--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ **Add**      | `add n/NAME h/TELEHANDLE i/INSTRUMENT c/COMMENT r/RATING [t/TAG]...` <br> e.g., `add n/John Doe h/@JOHNDOE i/Guitar c/Very good guitarist r/9 t/friends t/band`
+ **Copy**     | `copy [b/COUNT] [i/INSTRUMENT]`<br> e.g., `copy b/5`, `copy i/Piano`, `copy b/3 i/Guitar`
+ **Delete**   | `delete INDEX`<br> e.g., `delete 3`
+ **Edit**     | `edit INDEX [n/NAME] [h/TELEHANDLE] [i/INSTRUMENT] [c/COMMENT] [r/RATING] [t/TAG]...`<br> e.g.,`edit 1 h/@JohnDoe i/Piano`
+ **Exit**     | `exit`
+ **Find**     | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+ **Help**     | `help`
+ **Sort**     | `sort`
+ **View**     | `view INDEX` <br> e.g., `view 3`
+ **View All** | `viewall`
