@@ -16,7 +16,7 @@ Given below are my contributions to the project.
     * What it does: Copy auditionee details to clipboard, allowing for parameters to filter results
     * Justification: To allow user to publish results
 
-* **Code contributed**: [RepoSense link](<iframe src="https://nus-cs2103-ay2526s1.github.io/tp-dashboard/#/widget/?search=zheng&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=functional-code&since=2025-09-19T00%3A00%3A00&filteredFileName=&tabOpen=true&tabType=authorship&tabAuthor=zheng-jj&tabRepo=AY2526S1-CS2103-F11-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false&chartGroupIndex=0&chartIndex=0" frameBorder="0" width="800px" height="147px"></iframe>)
+* **Code contributed**: [RepoSense link](https://nus-cs2103-ay2526s1.github.io/tp-dashboard/#/widget/?search=zheng&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=functional-code&since=2025-09-19T00%3A00%3A00&filteredFileName=&tabOpen=true&tabType=authorship&tabAuthor=zheng-jj&tabRepo=AY2526S1-CS2103-F11-2%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=functional-code&authorshipIsBinaryFileTypeChecked=false&authorshipIsIgnoredFilesChecked=false&chartGroupIndex=0&chartIndex=0")
 
 * **Project management**:
     * Managed releases `v1.1` - `v1.6` (6 releases) on GitHub
